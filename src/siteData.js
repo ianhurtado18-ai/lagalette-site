@@ -33,7 +33,7 @@ export const homeMenuCards = [
     title: 'Brasileiros',
     description: 'Os sabores do Brasil em menus completos e cheios de tradição.',
     icon: 'brasileiros',
-    image: 'public/gallery/IMG_5415.png',
+    image: '/gallery/IMG_5415.png',
     to: '/brasileiros',
   },
   {
