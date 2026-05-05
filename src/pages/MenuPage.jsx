@@ -6,6 +6,9 @@ import { ServiceCard } from '../components/ui/ServiceCard'
 
 export function MenuPage({ page }) {
   const isSplitSectionsLayout = page.layout === 'split-sections'
+  const heroTitle = isSplitSectionsLayout
+    ? page.title.replace(/^Menus\s+/i, '')
+    : page.title
   const [activeGallery, setActiveGallery] = useState(null)
 
   function openGallery(section, photoIndex) {
@@ -77,6 +80,77 @@ export function MenuPage({ page }) {
     }
   }, [activeGallery])
 
+  function renderSectionText(section) {
+    const contentClassName = isSplitSectionsLayout
+      ? 'about-content menu-section-content'
+      : 'menu-section-content'
+    const listClassName = isSplitSectionsLayout
+      ? 'about-list prestation-list'
+      : 'prestation-list'
+    const buttonClassName = isSplitSectionsLayout
+      ? 'about-button quote-button'
+      : 'quote-button'
+
+    return (
+      <div className="menu-section-half menu-section-text-half">
+        <div className={contentClassName}>
+          <SectionTitle
+            title={section.title}
+            description={section.description}
+          />
+          <ul className={listClassName}>
+            {section.items.map((item) => (
+              <ServiceCard key={item}>{item}</ServiceCard>
+            ))}
+          </ul>
+          <ButtonPill
+            className={buttonClassName}
+            href="https://wa.me/5511986396891"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Solicitar orçamento
+          </ButtonPill>
+        </div>
+      </div>
+    )
+  }
+
+  function renderSectionGallery(section) {
+    const mediaClassName = isSplitSectionsLayout
+      ? 'menu-section-half menu-section-photo-half menu-section-gallery'
+      : 'menu-section-half menu-section-photo-half'
+    const photos = section.photos ?? []
+    const galleryPhotos = isSplitSectionsLayout ? photos.slice(0, 8) : photos
+
+    return (
+      <div
+        className={mediaClassName}
+        aria-label={section.imageAlt}
+      >
+        <div className="menu-photo-grid">
+          {galleryPhotos.map((photo, photoIndex) => (
+            <button
+              className="menu-photo-placeholder"
+              key={photo}
+              type="button"
+              onClick={() => openGallery(section, photoIndex)}
+            >
+              <img src={photo} alt={`${section.title} ${photoIndex + 1}`} />
+              <span>Foto {photoIndex + 1}</span>
+            </button>
+          ))}
+        </div>
+        {!isSplitSectionsLayout && (
+          <>
+            <span className="about-shape about-shape-large" aria-hidden="true" />
+            <span className="about-shape about-shape-small" aria-hidden="true" />
+          </>
+        )}
+      </div>
+    )
+  }
+
   return (
     <article
       className={`page menu-page ${isSplitSectionsLayout ? 'split-menu-page' : ''}`}
@@ -85,8 +159,7 @@ export function MenuPage({ page }) {
         <header className="page-header">
           <SectionTitle
             as="h1"
-            kicker="Menu"
-            title={page.title}
+            title={heroTitle}
             description={page.description}
           />
         </header>
@@ -97,8 +170,7 @@ export function MenuPage({ page }) {
           <div className="menu-page-hero-content">
             <SectionTitle
               as="h1"
-              kicker="Menu"
-              title={page.title}
+              title={heroTitle}
               description={page.description}
             />
             <AnchorPills
@@ -115,51 +187,28 @@ export function MenuPage({ page }) {
           <section
             key={section.id}
             id={section.id}
-            className={`section ${section.items ? 'menu-detail-section' : ''} ${
-              index % 2 === 1 ? 'menu-detail-section-right' : ''
+            className={`section ${
+              section.items
+                ? `${isSplitSectionsLayout ? 'about-section' : ''} menu-detail-section`
+                : ''
+            } ${
+              !isSplitSectionsLayout && index % 2 === 1 ? 'menu-detail-section-right' : ''
             }`}
           >
             {section.items ? (
-              <>
-                <div className="menu-section-half menu-section-text-half">
-                  <div className="menu-section-content">
-                    <SectionTitle
-                      kicker="Especialidade"
-                      title={section.title}
-                      description={section.description}
-                    />
-                    <ul className="prestation-list">
-                      {section.items.map((item) => (
-                        <ServiceCard key={item}>{item}</ServiceCard>
-                      ))}
-                    </ul>
-                    <ButtonPill className="quote-button" to="/#contato">
-                      Solicitar orcamento
-                    </ButtonPill>
-                  </div>
-                </div>
-                <div
-                  className="menu-section-half menu-section-photo-half"
-                  aria-label={section.imageAlt}
-                >
-                  <div className="menu-photo-grid">
-                    {(section.photos ?? []).map((photo, photoIndex) => (
-                      <button
-                        className="menu-photo-placeholder"
-                        key={photo}
-                        type="button"
-                        onClick={() => openGallery(section, photoIndex)}
-                      >
-                        <img src={photo} alt={`${section.title} ${photoIndex + 1}`} />
-                        <span>Foto {photoIndex + 1}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </>
+              isSplitSectionsLayout ? (
+                <>
+                  {renderSectionGallery(section)}
+                  {renderSectionText(section)}
+                </>
+              ) : (
+                <>
+                  {renderSectionText(section)}
+                  {renderSectionGallery(section)}
+                </>
+              )
             ) : (
               <SectionTitle
-                kicker={section.kicker}
                 title={section.title}
                 description={section.description}
               />
@@ -189,9 +238,7 @@ export function MenuPage({ page }) {
               className="gallery-close"
               aria-label="Fechar galeria"
               onClick={closeGallery}
-            >
-              <span aria-hidden="true">x</span>
-            </button>
+            />
             <button
               type="button"
               className="gallery-nav-button gallery-nav-previous"

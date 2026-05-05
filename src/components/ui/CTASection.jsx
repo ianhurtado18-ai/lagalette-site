@@ -26,11 +26,6 @@ export function CTASection({
           <span className="hero-button-arrow" aria-hidden="true" />
         </ButtonPill>
       </div>
-      <div className="cta-badge" aria-hidden="true">
-        <span className="cta-badge-icon" />
-        <strong>Atendimento</strong>
-        <span>personalizado em cada detalhe.</span>
-      </div>
     </section>
   )
 }

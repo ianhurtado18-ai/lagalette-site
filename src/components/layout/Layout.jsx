@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import { CTASection } from '../ui/CTASection'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 import { ScrollToHash } from './ScrollToHash'
@@ -11,6 +12,11 @@ export function Layout() {
       <main className="site-main">
         <Outlet />
       </main>
+      <CTASection
+        id="contato"
+        buttonLabel="Solicitar orçamento"
+        buttonTo="https://wa.me/5511986396891"
+      />
       <a
         className="whatsapp-floating-button"
         href="https://wa.me/5511986396891"

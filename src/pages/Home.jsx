@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { ButtonPill } from '../components/ui/ButtonPill'
-import { CTASection } from '../components/ui/CTASection'
 import { MenuCard } from '../components/ui/MenuCard'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import aboutPhoto from '../assets/quem-somos-1.jpg'
@@ -153,17 +152,7 @@ export function Home({ sections }) {
         }
 
         if (section.id === 'contato') {
-          return (
-            <CTASection
-              key={section.id}
-              id={section.id}
-              kicker={section.kicker}
-              title={section.title}
-              description={section.description}
-              buttonLabel="Solicitar orçamento"
-              buttonTo="https://wa.me/5511986396891"
-            />
-          )
+          return null
         }
 
         return (

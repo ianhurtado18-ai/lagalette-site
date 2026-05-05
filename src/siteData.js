@@ -133,7 +133,7 @@ export const menuLinks = [
 
 // Galerias De Fotos - Substituir com fotos reais quando disponíveis
 const sampleGalleryPhotos = [
-  '/gallery/sample-1.jpg',
+  '/gallery/sample-1.svg.jpg',
   '/gallery/sample-2.jpg',
   '/gallery/sample-3.jpg',
   '/gallery/sample-4.jpg',
@@ -141,10 +141,18 @@ const sampleGalleryPhotos = [
   '/gallery/sample-6.jpg',
   '/gallery/sample-7.jpg',
   '/gallery/sample-8.jpg',
+  '/gallery/tradicionais_cover.png',
+  '/gallery/cover.jpg',
+  '/gallery/IMG_5415.png',
+  '/gallery/internacionais_cover.jpg',
+  '/gallery/brasileiros_cover.webp',
+  '/gallery/INFANTIL - MILHO_.jpg',
+  '/gallery/INFANTIL_BOTECO - COXINHA.jpg',
+  '/gallery/sample-2.jpg',
 ]
 
 const MassasGalleryPhotos = [
-  '/gallery/sample-1.jpg',
+  '/gallery/sample-1.svg.jpg',
   '/gallery/sample-2.jpg',
   '/gallery/sample-3.jpg',
   '/gallery/INFANTIL - MILHO_.jpg',
@@ -152,6 +160,14 @@ const MassasGalleryPhotos = [
   '/gallery/sample-6.jpg',
   '/gallery/sample-7.jpg',
   '/gallery/sample-8.jpg',
+  '/gallery/tradicionais_cover.png',
+  '/gallery/cover.jpg',
+  '/gallery/IMG_5415.png',
+  '/gallery/internacionais_cover.jpg',
+  '/gallery/brasileiros_cover.webp',
+  '/gallery/INFANTIL_BOTECO - COXINHA.jpg',
+  '/gallery/sample-3.jpg',
+  '/gallery/sample-4.jpg',
 ]
 
  
@@ -165,7 +181,7 @@ export const menuPages = [
     sections: [
       section(
         'crepes',
-        'Crepes',
+        'Crêpes',
         'Uma proposta versátil para recepções leves, jantares descontraídos e eventos com preparo ao vivo.',
         {
           items: [
