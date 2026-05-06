@@ -4,7 +4,7 @@ export function AnchorPills({ className = '', items, label = 'Sections' }) {
       className={['anchor-pills', className].filter(Boolean).join(' ')}
       aria-label={label}
     >
-      {items.map((item) => (
+      {items.filter((item) => !item.hideInNav).map((item) => (
         <a href={`#${item.id}`} key={item.id}>
           {item.title}
         </a>

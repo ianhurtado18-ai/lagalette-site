@@ -24,44 +24,44 @@ export const homeSections = [
 export const homeMenuCards = [
   {
     title: 'Tradicionais',
-    description: 'Crepes, massas, risottos e muito mais, preparados na frente dos convidados.',
+    description: 'Crêpes, Massas ou Risottos preparados por nossos chefs de cozinha na hora e na frente dos convidados.',
     icon: 'tradicionais',
     image: '/gallery/tradicionais_cover.png',
     to: '/tradicionais',
   },
   {
     title: 'Brasileiros',
-    description: 'Os sabores do Brasil em menus completos e cheios de tradição.',
+    description: 'Feijoadas, Churrascos e outros sabores do Brasil em cardápios completos e cheios de tradição.',
     icon: 'brasileiros',
-    image: '/gallery/IMG_5415.png',
+    image: '/gallery/brasileiros_cover.webp',
     to: '/brasileiros',
   },
   {
     title: 'Internacionais',
-    description: 'Inspiração de diversas culturas para experiências sofisticadas.',
+    description: 'Uma viagem gastronômica inspirada em diversas culturas para experiências sofisticadas.',
     icon: 'internacionais',
     image: '/gallery/internacionais_cover.jpg',
     to: '/internacionais',
   },
   {
     title: 'Finger Food',
-    description: 'Opções práticas e elegantes para coquetéis e eventos descontraídos.',
+    description: 'Delicadeza e criatividade nessa gastronomia contemporânea em serviços volantes ou ilhas gastronômicas.',
     icon: 'finger-food',
-    image: '/gallery/sample-4.jpg',
+    image: '/gallery/finger_cover.png',
     to: '/finger-food',
   },
   {
-    title: 'Brunchs',
-    description: 'Ideal para encontros de dia, com leveza e muito sabor.',
+    title: 'Brunch',
+    description: 'Ideal em eventos diurnos com leveza e muito sabor.',
     icon: 'brunchs',
-    image: '/gallery/sample-5.jpg',
+    image: '/gallery/brunch_cover.png',
     to: '/brunchs',
   },
   {
     title: 'Kids & Teens',
-    description: 'Menus especiais para os pequenos e jovens convidados.',
+    description: 'Culinária pensada especialmente para crianças ou adolescentes, mas que todos apreciam.',
     icon: 'kids-teens',
-    image: '/gallery/sample-6.jpg',
+    image: '/gallery/kids_cover.png',
     to: '/kids-teens',
   },
 ]
@@ -85,7 +85,7 @@ export const homeServiceCards = [
     title: 'Bebidas',
     description: 'Seleção de bebidas para harmonizar e elevar seu evento.',
     icon: 'bebidas',
-    image: '/gallery/sample-1.jpg',
+    image: '/gallery/sample-6.jpg',
     to: '/servicos-complementares#bebidas',
   },
 ]
@@ -177,18 +177,17 @@ export const menuPages = [
     layout: 'split-sections',
     title: 'Menus Tradicionais',
     description:
-      'Opções clássicas para eventos completos, com preparos feitos no local e cardápios adaptados ao formato da sua celebração.',
+      'Crêpes, Massas ou Risottos preparados por nossos chefs de cozinha na hora e na frente dos convidados.',
     sections: [
       section(
         'crepes',
         'Crêpes',
-        'Uma proposta versátil para recepções leves, jantares descontraídos e eventos com preparo ao vivo.',
+        'Cocktail volante seguido de buffet de crêpes salgadas com salada(s) e molhos quentes e crêpes doces com sorvete e calda, todas preparadas na frente dos convidados. Nas versões :',
         {
           items: [
-            'Crepes salgados preparados na hora',
-            'Opções vegetarianas e com carnes',
-            'Crepes doces para finalizar o menu',
-            'Seleção de recheios personalizada',
+            'Tradicional',
+            'VIP',
+            'Gourmet',
           ],
           imageAlt: 'Galeria de crepes',
           photos: sampleGalleryPhotos,
@@ -197,13 +196,11 @@ export const menuPages = [
       section(
         'massas',
         'Massas',
-        'Massas frescas e molhos variados para um serviço acolhedor, prático e fácil de adaptar aos convidados.',
+        'Cocktail volante seguido de buffet de massas preparadas na frente dos convidados com diversos temperos, molhos quentes e salada(s) para acompanhar. Carne opcional. Nas versões:',
         {
           items: [
-            'Massas curtas e longas',
-            'Molhos clássicos e autorais',
-            'Opções com queijo, legumes, carnes ou frutos do mar',
-            'Montagem em buffet ou estação gastronômica',
+            'Tradicional',
+            'Gourmet',
           ],
           imageAlt: 'Galeria de massas',
           photos: MassasGalleryPhotos,
@@ -212,13 +209,11 @@ export const menuPages = [
       section(
         'risottos',
         'Risottos',
-        'Risottos cremosos, preparados com ingredientes selecionados e servidos no ponto ideal durante o evento.',
+        'Cocktail volante seguido de buffet de risottos preparados na frente dos convidados com diversos temperos, molhos quentes e salada(s) para acompanhar. Carne opcional. Nas versões:',
         {
           items: [
-            'Risottos vegetarianos',
-            'Risottos com carnes ou frutos do mar',
-            'Finalização ao vivo para eventos',
-            'Combinações personalizadas para cada ocasião',
+            'Tradicional',
+            'Gourmet',
           ],
           imageAlt: 'Galeria de risottos',
           photos: sampleGalleryPhotos,
@@ -228,68 +223,221 @@ export const menuPages = [
   },
   {
     path: 'brasileiros',
+    layout: 'split-sections',
     title: 'Menus Brasileiros',
     description:
       'Receitas brasileiras em formatos pensados para festas, encontros familiares e celebrações corporativas.',
     sections: [
-      section('feijoada', 'Feijoada', 'Um clássico brasileiro servido com acompanhamentos tradicionais e montagem cuidadosa.'),
-      section('churrasco', 'Churrasco', 'Cortes selecionados, guarnições e serviço adaptado ao ritmo do evento.'),
-      section('boteco', 'Boteco', 'Petiscos, porções e sabores descontraídos para uma experiência leve e animada.'),
-      section('escondidinhos', 'Escondidinhos', 'Receitas cremosas e acolhedoras em versões variadas.'),
-      section('brasileiro', 'Brasileiro', 'Pratos brasileiros variados para compor um buffet completo e generoso.'),
-      section('junino', 'Junino', 'Sabores de festa junina para eventos temáticos e celebrações sazonais.'),
+      section(
+        'feijoada',
+        'Feijoada',
+        'Um clássico brasileiro servido com acompanhamentos tradicionais e montagem cuidadosa.',
+        {
+          items: [],
+          imageAlt: 'Galeria de feijoada',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'churrasco',
+        'Churrasco',
+        'Cortes selecionados, guarnições e serviço adaptado ao ritmo do evento.',
+        {
+          items: [],
+          imageAlt: 'Galeria de churrasco',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'boteco',
+        'Boteco',
+        'Petiscos, porções e sabores descontraídos para uma experiência leve e animada.',
+        {
+          items: [],
+          imageAlt: 'Galeria de boteco',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'outros',
+        'Outros',
+        'Outras receitas brasileiras para compor um buffet completo e adaptado ao estilo do evento.',
+        {
+          hideInNav: true,
+          items: [],
+          imageAlt: 'Galeria de outros pratos brasileiros',
+          photos: sampleGalleryPhotos,
+        },
+      ),
     ],
   },
   {
     path: 'internacionais',
+    layout: 'split-sections',
     title: 'Menus Internacionais',
     description:
       'Inspirações de diferentes cozinhas para criar uma recepção elegante, saborosa e personalizada.',
     sections: [
-      section('frances', 'Francês', 'Propostas inspiradas na cozinha francesa, com apresentação delicada e sabores refinados.'),
-      section('italiano', 'Italiano', 'Massas, molhos e combinações clássicas para um menu acolhedor.'),
-      section('espanhol', 'Espanhol', 'Sabores espanhóis em receitas ideais para compartilhar.'),
-      section('mediterraneo', 'Mediterrâneo', 'Ingredientes frescos, leves e aromáticos para uma mesa equilibrada.'),
-      section('hamburgueria', 'Hamburgueria', 'Mini burgers e acompanhamentos para eventos informais com acabamento caprichado.'),
+      section(
+        'frances',
+        'Francês',
+        'Propostas inspiradas na cozinha francesa, com apresentação delicada e sabores refinados.',
+        {
+          items: [],
+          imageAlt: 'Galeria de francês',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'italiano',
+        'Italiano',
+        'Massas, molhos e combinações clássicas para um menu acolhedor.',
+        {
+          items: [],
+          imageAlt: 'Galeria de italiano',
+          photos: MassasGalleryPhotos,
+        },
+      ),
+      section(
+        'espanhol',
+        'Espanhol',
+        'Sabores espanhóis em receitas ideais para compartilhar.',
+        {
+          items: [],
+          imageAlt: 'Galeria de espanhol',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'mediterraneo',
+        'Mediterrâneo',
+        'Ingredientes frescos, leves e aromáticos para uma mesa equilibrada.',
+        {
+          items: [],
+          imageAlt: 'Galeria de mediterrâneo',
+          photos: sampleGalleryPhotos,
+        },
+      ),
     ],
   },
   {
     path: 'finger-food',
+    layout: 'split-sections',
     title: 'Finger Food',
     description:
       'Porções individuais e formatos práticos para coquetéis, inaugurações e eventos em movimento.',
     sections: [
-      section('cocktail-volante', 'Cocktail Volante', 'Bites servidos em circulação para manter o evento fluido.'),
-      section('ilha-gastronomica', 'Ilha Gastronômica', 'Ilhas de degustação para compor uma experiência visual e saborosa.'),
+      section(
+        'cocktail-volante',
+        'Cocktail Volante',
+        'Bites servidos em circulação para manter o evento fluido.',
+        {
+          items: [],
+          imageAlt: 'Galeria de cocktail volante',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'ilha-gastronomica',
+        'Ilha Gastronômica',
+        'Ilhas de degustação para compor uma experiência visual e saborosa.',
+        {
+          items: [],
+          imageAlt: 'Galeria de ilha gastronômica',
+          photos: sampleGalleryPhotos,
+        },
+      ),
     ],
   },
   {
     path: 'brunchs',
+    layout: 'split-sections',
     title: 'Brunchs',
     description:
       'Menus leves para encontros diurnos, com opções doces, salgadas e bebidas para acompanhar.',
     sections: [
-      section('breakfast', 'Breakfast', 'Itens de café da manhã para recepções, reuniões e eventos corporativos.'),
-      section('brunch', 'Brunch', 'Uma composição completa entre café da manhã e almoço.'),
-      section('tea-time', 'Tea Time', 'Pausas doces e salgadas para encontros elegantes e acolhedores.'),
+      section(
+        'breakfast',
+        'Breakfast',
+        'Itens de café da manhã para recepções, reuniões e eventos corporativos.',
+        {
+          items: [],
+          imageAlt: 'Galeria de breakfast',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'brunch',
+        'Brunch',
+        'Uma composição completa entre café da manhã e almoço.',
+        {
+          items: [],
+          imageAlt: 'Galeria de brunch',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'tea-time',
+        'Tea Time',
+        'Pausas doces e salgadas para encontros elegantes e acolhedores.',
+        {
+          items: [],
+          imageAlt: 'Galeria de tea time',
+          photos: sampleGalleryPhotos,
+        },
+      ),
     ],
   },
   {
     path: 'kids-teens',
+    layout: 'single-feature',
+    kicker: 'Kids & Teens',
     title: 'Kids Teens',
     description:
       'Menus pensados para festas infantis e teens, com apresentação divertida e sabores que agradam diferentes idades.',
+    body:
+      'Criamos composições leves, generosas e fáceis de servir para aniversários, celebrações familiares e festas teen. A proposta combina opções que agradam crianças, adolescentes e adultos, mantendo uma apresentação cuidada e um serviço fluido do início ao fim.',
+    imageAlt: 'Galeria de kids e teens',
+    photos: sampleGalleryPhotos,
     sections: [],
   },
   {
     path: 'servicos-complementares',
+    layout: 'split-sections',
     title: 'Serviços Complementares',
     description:
       'Complementos para deixar seu evento mais completo, dos bolos às bebidas.',
     sections: [
-      section('bolos', 'Bolos', 'Bolos personalizados para aniversários, casamentos e celebrações especiais.'),
-      section('doces', 'Doces', 'Doces finos, sobremesas e pequenas delicadezas para completar a mesa.'),
-      section('bebidas', 'Bebidas', 'Seleção de bebidas para harmonizar com o menu e o formato do evento.'),
+      section(
+        'bolos',
+        'Bolos',
+        'Bolos personalizados para aniversários, casamentos e celebrações especiais.',
+        {
+          items: [],
+          imageAlt: 'Galeria de bolos',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'doces',
+        'Doces',
+        'Doces finos, sobremesas e pequenas delicadezas para completar a mesa.',
+        {
+          items: [],
+          imageAlt: 'Galeria de doces',
+          photos: sampleGalleryPhotos,
+        },
+      ),
+      section(
+        'bebidas',
+        'Bebidas',
+        'Seleção de bebidas para harmonizar com o menu e o formato do evento.',
+        {
+          items: [],
+          imageAlt: 'Galeria de bebidas',
+          photos: sampleGalleryPhotos,
+        },
+      ),
     ],
   },
 ]
@@ -297,17 +445,27 @@ export const menuPages = [
 export const simplePages = [
   {
     path: 'corporativo',
+    layout: 'single-feature',
     kicker: 'Corporativo',
     title: 'Eventos corporativos',
     description:
       'Soluções para reuniões, treinamentos, confraternizações e recepções empresariais.',
+    body:
+      'Desenvolvemos propostas para encontros profissionais que precisam de pontualidade, apresentação elegante e serviço discreto. O menu pode acompanhar coffee breaks, almoços, coquetéis ou celebrações internas, sempre adaptado ao ritmo da empresa e ao perfil dos convidados.',
+    imageAlt: 'Galeria de eventos corporativos',
+    photos: sampleGalleryPhotos,
   },
   {
     path: 'personalizado',
+    layout: 'single-feature',
     kicker: 'Personalizado',
     title: 'Menu personalizado',
     description:
       'Criamos uma proposta sob medida a partir do estilo do evento, número de convidados e preferências do cliente.',
+    body:
+      'Quando o evento pede uma composição própria, reunimos referências, formato de serviço e preferências gastronômicas para desenhar um menu sob medida. A ideia é construir uma experiência coerente, acolhedora e ajustada ao momento que você quer celebrar.',
+    imageAlt: 'Galeria de menus personalizados',
+    photos: sampleGalleryPhotos,
   },
 ]
 

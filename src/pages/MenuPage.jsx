@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnchorPills } from '../components/ui/AnchorPills'
 import { ButtonPill } from '../components/ui/ButtonPill'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { ServiceCard } from '../components/ui/ServiceCard'
+import { FeaturePage } from './FeaturePage'
 
 export function MenuPage({ page }) {
+  const isSingleFeatureLayout = page.layout === 'single-feature'
   const isSplitSectionsLayout = page.layout === 'split-sections'
   const heroTitle = isSplitSectionsLayout
     ? page.title.replace(/^Menus\s+/i, '')
     : page.title
   const [activeGallery, setActiveGallery] = useState(null)
+  const touchStartX = useRef(null)
 
   function openGallery(section, photoIndex) {
     const photos = section.photos ?? []
@@ -54,6 +57,29 @@ export function MenuPage({ page }) {
     })
   }
 
+  function handleGalleryTouchStart(event) {
+    touchStartX.current = event.touches[0].clientX
+  }
+
+  function handleGalleryTouchEnd(event) {
+    if (touchStartX.current === null) {
+      return
+    }
+
+    const swipeDistance = event.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+
+    if (Math.abs(swipeDistance) < 44) {
+      return
+    }
+
+    if (swipeDistance > 0) {
+      showPreviousPhoto()
+    } else {
+      showNextPhoto()
+    }
+  }
+
   useEffect(() => {
     if (!activeGallery) {
       return
@@ -79,6 +105,10 @@ export function MenuPage({ page }) {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [activeGallery])
+
+  if (isSingleFeatureLayout) {
+    return <FeaturePage page={page} />
+  }
 
   function renderSectionText(section) {
     const contentClassName = isSplitSectionsLayout
@@ -247,7 +277,11 @@ export function MenuPage({ page }) {
             >
               <span aria-hidden="true">{'\u2039'}</span>
             </button>
-            <div className="gallery-image-placeholder">
+            <div
+              className="gallery-image-placeholder"
+              onTouchStart={handleGalleryTouchStart}
+              onTouchEnd={handleGalleryTouchEnd}
+            >
               <img
                 src={activeGallery.photos[activeGallery.photoIndex]}
                 alt={`${activeGallery.sectionTitle} ${activeGallery.photoIndex + 1}`}
