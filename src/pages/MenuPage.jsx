@@ -13,6 +13,7 @@ export function MenuPage({ page }) {
     : page.title
   const [activeGallery, setActiveGallery] = useState(null)
   const touchStartX = useRef(null)
+  const touchStartY = useRef(null)
 
   function openGallery(section, photoIndex) {
     const photos = section.photos ?? []
@@ -59,17 +60,20 @@ export function MenuPage({ page }) {
 
   function handleGalleryTouchStart(event) {
     touchStartX.current = event.touches[0].clientX
+    touchStartY.current = event.touches[0].clientY
   }
 
   function handleGalleryTouchEnd(event) {
-    if (touchStartX.current === null) {
+    if (touchStartX.current === null || touchStartY.current === null) {
       return
     }
 
     const swipeDistance = event.changedTouches[0].clientX - touchStartX.current
+    const verticalDistance = event.changedTouches[0].clientY - touchStartY.current
     touchStartX.current = null
+    touchStartY.current = null
 
-    if (Math.abs(swipeDistance) < 44) {
+    if (Math.abs(swipeDistance) < 36 || Math.abs(swipeDistance) < Math.abs(verticalDistance) * 1.2) {
       return
     }
 
@@ -262,7 +266,11 @@ export function MenuPage({ page }) {
             aria-label="Fechar galeria"
             onClick={closeGallery}
           />
-          <div className="gallery-content">
+          <div
+            className="gallery-content"
+            onTouchStart={handleGalleryTouchStart}
+            onTouchEnd={handleGalleryTouchEnd}
+          >
             <button
               type="button"
               className="gallery-close"
@@ -277,11 +285,7 @@ export function MenuPage({ page }) {
             >
               <span aria-hidden="true">{'\u2039'}</span>
             </button>
-            <div
-              className="gallery-image-placeholder"
-              onTouchStart={handleGalleryTouchStart}
-              onTouchEnd={handleGalleryTouchEnd}
-            >
+            <div className="gallery-image-placeholder">
               <img
                 src={activeGallery.photos[activeGallery.photoIndex]}
                 alt={`${activeGallery.sectionTitle} ${activeGallery.photoIndex + 1}`}

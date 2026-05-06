@@ -7,6 +7,7 @@ export function FeaturePage({ page }) {
   const galleryPhotos = photos.slice(0, 8)
   const [activePhotoIndex, setActivePhotoIndex] = useState(null)
   const touchStartX = useRef(null)
+  const touchStartY = useRef(null)
 
   const hasActivePhoto = activePhotoIndex !== null
 
@@ -36,17 +37,20 @@ export function FeaturePage({ page }) {
 
   function handleGalleryTouchStart(event) {
     touchStartX.current = event.touches[0].clientX
+    touchStartY.current = event.touches[0].clientY
   }
 
   function handleGalleryTouchEnd(event) {
-    if (touchStartX.current === null) {
+    if (touchStartX.current === null || touchStartY.current === null) {
       return
     }
 
     const swipeDistance = event.changedTouches[0].clientX - touchStartX.current
+    const verticalDistance = event.changedTouches[0].clientY - touchStartY.current
     touchStartX.current = null
+    touchStartY.current = null
 
-    if (Math.abs(swipeDistance) < 44) {
+    if (Math.abs(swipeDistance) < 36 || Math.abs(swipeDistance) < Math.abs(verticalDistance) * 1.2) {
       return
     }
 
@@ -129,7 +133,11 @@ export function FeaturePage({ page }) {
             aria-label="Fechar galeria"
             onClick={closeGallery}
           />
-          <div className="gallery-content">
+          <div
+            className="gallery-content"
+            onTouchStart={handleGalleryTouchStart}
+            onTouchEnd={handleGalleryTouchEnd}
+          >
             <button
               type="button"
               className="gallery-close"
@@ -144,11 +152,7 @@ export function FeaturePage({ page }) {
             >
               <span aria-hidden="true">{'\u2039'}</span>
             </button>
-            <div
-              className="gallery-image-placeholder"
-              onTouchStart={handleGalleryTouchStart}
-              onTouchEnd={handleGalleryTouchEnd}
-            >
+            <div className="gallery-image-placeholder">
               <img
                 src={photos[activePhotoIndex]}
                 alt={`${page.title} ${activePhotoIndex + 1}`}
