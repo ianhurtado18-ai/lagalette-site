@@ -3,7 +3,7 @@ import { ButtonPill } from '../components/ui/ButtonPill'
 import { MenuCard } from '../components/ui/MenuCard'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import aboutPhoto from '../assets/quem-somos-1.jpg'
-import { clientTestimonials, homeMenuCards, homeServiceCards, trustLogos } from '../siteData'
+import { clientTestimonials, homeMenuCards, homeServiceCards } from '../siteData'
 
 export function Home({ sections }) {
   const [testimonialIndex, setTestimonialIndex] = useState(0)
@@ -32,9 +32,10 @@ export function Home({ sections }) {
           </h1>
           <span className="hero-rule" aria-hidden="true" />
           <p>
-            <span>Do cuidado em cada detalhe ao sabor</span>
-            <span>que encanta, transformamos seu evento</span>
-            <span>em uma mem&#243;ria para sempre.</span>
+            <span>Com acompanhamento personalizado</span>
+            <span>do primeiro contato ao dia do evento,</span>
+            <span>atenção aos detalhes e sabores que conquistam,</span>
+            <span>transformamos seu evento numa vivência única e marcante.</span>
           </p>
           <ButtonPill className="hero-button" to="/#menus">
             Descobrir nossos menus
@@ -60,13 +61,14 @@ export function Home({ sections }) {
               <div className="about-content">
                 <SectionTitle
                   kicker={section.kicker}
-                  title="Tradi&#231;&#227;o, cuidado e paix&#227;o pelo que fazemos."
-                  description="La Galette é uma empresa familiar especializada em recepções privadas e corporativas. Criamos propostas sob medida, adaptadas ao seu evento."
+                  title="Tradi&#231;&#227;o familiar, cozinha artesanal e olhar contemporâneo."
+                  description="Com raízes em uma tradição gastronômica familiar que nasceu em um restaurante na França e se consolidou no Brasil, La Galette Buffet é especializado na realização de eventos sociais e corporativos."
                 />
                 <ul className="about-list">
-                  <li>Mais de 30 anos de experi&#234;ncia em eventos</li>
-                  <li>Produtos frescos e cozinha artesanal</li>
-                  <li>Acompanhamento personalizado do pedido ao dia do evento</li>
+                  <li>Experiência em eventos desde 1993</li>
+                  <li>Tradição com uma visão moderna e criativa</li>
+                  <li>Cozinha artesanal com ingredientes frescos e selecionados</li>
+                  <li>Equipe qualificada, atenciosa e comprometida</li>
                 </ul>
                 <ButtonPill className="about-button" to="/#menus">
                   Conhecer mais
@@ -81,7 +83,7 @@ export function Home({ sections }) {
             <section key={section.id} id={section.id} className="section menus-section">
               <SectionTitle
                 kicker={'Nossos Card\u00e1pios'}
-                title="Sabores para todos os momentos."
+                title="Menus para transformar cada encontro em uma experiência memorável."
               />
               <div className="card-grid">
                 {homeMenuCards.map((card) => (
@@ -118,15 +120,11 @@ export function Home({ sections }) {
 
               <div className="trust-content">
                 <div className="trust-logo-panel" aria-label="Empresas clientes">
-                  {trustLogos.map((logo, index) => (
-                    <div
-                      className={`trust-logo-card trust-logo-card-${logo.variant}`}
-                      key={`${logo.name}-${index}`}
-                      aria-label={logo.name}
-                    >
-                      <span>{logo.name}</span>
-                    </div>
-                  ))}
+                  <img
+                    className="trust-logo-image"
+                    src="/logos/client-logos-placeholder.svg"
+                    alt="Logos de empresas clientes"
+                  />
                 </div>
 
                 <div className="testimonial-panel" aria-live="polite">

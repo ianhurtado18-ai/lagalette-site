@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import { homeMenuCards } from '../../siteData'
 import { CTASection } from '../ui/CTASection'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
@@ -16,6 +17,7 @@ export function Layout() {
         id="contato"
         buttonLabel="Solicitar orçamento"
         buttonTo="https://wa.me/5511986396891"
+        navigationItems={homeMenuCards}
       />
       <a
         className="whatsapp-floating-button"

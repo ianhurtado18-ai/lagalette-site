@@ -210,7 +210,7 @@ export function MenuPage({ page }) {
             <AnchorPills
               className="menu-page-links"
               items={page.sections}
-              label="Secoes do menu"
+              label="Seções do menu"
             />
           </div>
         </header>

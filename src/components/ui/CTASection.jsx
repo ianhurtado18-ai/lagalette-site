@@ -5,6 +5,7 @@ export function CTASection({
   buttonLabel = 'Solicitar orçamento',
   buttonTo = '/#contato',
   id,
+  navigationItems = [],
 }) {
   const isExternalButton = buttonTo.startsWith('http')
 
@@ -26,6 +27,15 @@ export function CTASection({
           <span className="hero-button-arrow" aria-hidden="true" />
         </ButtonPill>
       </div>
+      {navigationItems.length > 0 && (
+        <nav className="cta-menu-nav" aria-label="Navegação de cardápios">
+          {navigationItems.map((item) => (
+            <ButtonPill className="hero-button cta-menu-button" key={item.to} to={item.to}>
+              {item.title}
+            </ButtonPill>
+          ))}
+        </nav>
+      )}
     </section>
   )
 }

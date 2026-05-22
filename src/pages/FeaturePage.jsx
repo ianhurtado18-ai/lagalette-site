@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { SectionTitle } from '../components/ui/SectionTitle'
 
 export function FeaturePage({ page }) {
@@ -61,6 +62,29 @@ export function FeaturePage({ page }) {
     }
   }
 
+  function renderClosing() {
+    if (!page.closingLinks?.length) {
+      return page.closing
+    }
+
+    const linkedLabels = page.closingLinks.map((link) => link.label)
+    const pattern = new RegExp(`(${linkedLabels.join('|')})`, 'g')
+
+    return page.closing.split(pattern).map((part, index) => {
+      const link = page.closingLinks.find((item) => item.label === part)
+
+      if (!link) {
+        return part
+      }
+
+      return (
+        <Link key={`${link.to}-${index}`} to={link.to}>
+          {part}
+        </Link>
+      )
+    })
+  }
+
   useEffect(() => {
     if (!hasActivePhoto) {
       return
@@ -106,6 +130,17 @@ export function FeaturePage({ page }) {
       <section className="single-feature-section">
         <div className="single-feature-copy">
           <p>{page.body}</p>
+          {page.highlights && (
+            <div className="single-feature-highlights">
+              {page.highlights.map((highlight) => (
+                <article className="single-feature-highlight" key={highlight.title}>
+                  <h2>{highlight.title}</h2>
+                  <p>{highlight.text}</p>
+                  {highlight.note && <span>{highlight.note}</span>}
+                </article>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="single-feature-gallery" aria-label={page.imageAlt}>
@@ -123,6 +158,8 @@ export function FeaturePage({ page }) {
             ))}
           </div>
         </div>
+
+        {page.closing && <p className="single-feature-closing">{renderClosing()}</p>}
       </section>
 
       {hasActivePhoto && (
