@@ -130,13 +130,25 @@ export function MenuPage({ page }) {
         <div className={contentClassName}>
           <SectionTitle
             title={section.title}
+            titleLines={section.titleLines}
             description={section.description}
+            descriptionLines={section.descriptionLines}
           />
-          <ul className={listClassName}>
-            {section.items.map((item) => (
-              <ServiceCard key={item}>{item}</ServiceCard>
-            ))}
-          </ul>
+          {section.versoes && (
+            <p className="menu-section-versions">{section.versoes}</p>
+          )}
+          {section.items.length > 0 && (
+            <ul className={listClassName}>
+              {section.items.map((item) => (
+                <ServiceCard key={item}>{item}</ServiceCard>
+              ))}
+            </ul>
+          )}
+          {section.disclaimer && (
+            <p className="menu-section-disclaimer">
+              <em>{section.disclaimer}</em>
+            </p>
+          )}
           <ButtonPill
             className={buttonClassName}
             href="https://wa.me/5511986396891"
@@ -194,7 +206,9 @@ export function MenuPage({ page }) {
           <SectionTitle
             as="h1"
             title={heroTitle}
+            titleLines={page.titleLines}
             description={page.description}
+            descriptionLines={page.descriptionLines}
           />
         </header>
       )}
@@ -205,7 +219,9 @@ export function MenuPage({ page }) {
             <SectionTitle
               as="h1"
               title={heroTitle}
+              titleLines={page.titleLines}
               description={page.description}
+              descriptionLines={page.descriptionLines}
             />
             <AnchorPills
               className="menu-page-links"
@@ -244,7 +260,9 @@ export function MenuPage({ page }) {
             ) : (
               <SectionTitle
                 title={section.title}
+                titleLines={section.titleLines}
                 description={section.description}
+                descriptionLines={section.descriptionLines}
               />
             )}
           </section>

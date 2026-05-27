@@ -61,7 +61,7 @@ export function Home({ sections }) {
               <div className="about-content">
                 <SectionTitle
                   kicker={section.kicker}
-                  title="Tradi&#231;&#227;o familiar, cozinha artesanal e olhar contemporâneo."
+                  title="Herança gastronômica familiar, cozinha artesanal e um olhar contemporâneo."
                   description="Com raízes em uma tradição gastronômica familiar que nasceu em um restaurante na França e se consolidou no Brasil, La Galette Buffet é especializado na realização de eventos sociais e corporativos."
                 />
                 <ul className="about-list">
@@ -82,8 +82,8 @@ export function Home({ sections }) {
           return (
             <section key={section.id} id={section.id} className="section menus-section">
               <SectionTitle
-                kicker={'Nossos Card\u00e1pios'}
-                title="Menus para transformar cada encontro em uma experiência memorável."
+                kicker="Nossos Menus"
+                title="Para cada estilo de evento, um menu perfeito e memorável."
               />
               <div className="card-grid">
                 {homeMenuCards.map((card) => (
@@ -99,7 +99,7 @@ export function Home({ sections }) {
             <section key={section.id} id={section.id} className="section services-section">
               <SectionTitle
                 kicker={'Servi\u00e7os Complementares'}
-                title="Solu&#231;&#245;es personalizadas para cada tipo de evento."
+                title="Soluções personalizadas de acordo com sua demanda."
               />
               <div className="card-grid">
                 {homeServiceCards.map((card) => (
@@ -115,7 +115,7 @@ export function Home({ sections }) {
             <section key={section.id} id={section.id} className="section trust-section">
               <SectionTitle
                 kicker={section.kicker}
-                title="Eles confiam na gente para seus momentos importantes."
+                title="Escolhem nosso trabalho para a realização de eventos marcantes."
               />
 
               <div className="trust-content">

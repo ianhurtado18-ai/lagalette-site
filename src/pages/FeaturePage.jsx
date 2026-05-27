@@ -5,12 +5,13 @@ import { SectionTitle } from '../components/ui/SectionTitle'
 export function FeaturePage({ page }) {
   const photos = page.photos ?? []
   const totalPhotos = photos.length
-  const galleryPhotos = photos.slice(0, 8)
+  const galleryPhotos = photos.slice(0, page.galleryLimit ?? 8)
   const [activePhotoIndex, setActivePhotoIndex] = useState(null)
   const touchStartX = useRef(null)
   const touchStartY = useRef(null)
 
   const hasActivePhoto = activePhotoIndex !== null
+  const isGalleryLeftLayout = page.featureLayout === 'gallery-left'
 
   function closeGallery() {
     setActivePhotoIndex(null)
@@ -116,20 +117,45 @@ export function FeaturePage({ page }) {
   }, [hasActivePhoto, totalPhotos])
 
   return (
-    <article className="page split-menu-page single-feature-page">
+    <article
+      className={[
+        'page split-menu-page single-feature-page',
+        isGalleryLeftLayout ? 'single-feature-page-gallery-left' : '',
+      ].filter(Boolean).join(' ')}
+    >
       <header className="menu-page-hero single-feature-hero">
         <div className="menu-page-hero-content single-feature-hero-content">
           <SectionTitle
             as="h1"
             title={page.title}
+            titleLines={page.titleLines}
             description={page.description}
+            descriptionLines={page.descriptionLines}
           />
         </div>
       </header>
 
       <section className="single-feature-section">
+        {isGalleryLeftLayout && (
+          <div className="single-feature-gallery" aria-label={page.imageAlt}>
+            <div className="menu-photo-grid">
+              {galleryPhotos.map((photo, photoIndex) => (
+                <button
+                  className="menu-photo-placeholder"
+                  key={photo}
+                  type="button"
+                  onClick={() => setActivePhotoIndex(photoIndex)}
+                >
+                  <img src={photo} alt={`${page.title} ${photoIndex + 1}`} />
+                  <span>Foto {photoIndex + 1}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="single-feature-copy">
-          <p>{page.body}</p>
+          {page.body && <p>{page.body}</p>}
           {page.highlights && (
             <div className="single-feature-highlights">
               {page.highlights.map((highlight) => (
@@ -141,9 +167,13 @@ export function FeaturePage({ page }) {
               ))}
             </div>
           )}
+          {isGalleryLeftLayout && page.closing && (
+            <p className="single-feature-closing">{renderClosing()}</p>
+          )}
         </div>
 
-        <div className="single-feature-gallery" aria-label={page.imageAlt}>
+        {!isGalleryLeftLayout && (
+          <div className="single-feature-gallery" aria-label={page.imageAlt}>
           <div className="menu-photo-grid">
             {galleryPhotos.map((photo, photoIndex) => (
               <button
@@ -158,8 +188,11 @@ export function FeaturePage({ page }) {
             ))}
           </div>
         </div>
+        )}
 
-        {page.closing && <p className="single-feature-closing">{renderClosing()}</p>}
+        {!isGalleryLeftLayout && page.closing && (
+          <p className="single-feature-closing">{renderClosing()}</p>
+        )}
       </section>
 
       {hasActivePhoto && (

@@ -13,7 +13,9 @@ export function SimplePage({ page }) {
           as="h1"
           kicker={page.kicker}
           title={page.title}
+          titleLines={page.titleLines}
           description={page.description}
+          descriptionLines={page.descriptionLines}
         />
       </header>
     </article>

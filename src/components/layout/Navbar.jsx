@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logoHorizontal from '../../assets/logo-lagalette-brand.png'
-import { menuLinks } from '../../siteData'
+import { menuLinks, serviceLinks } from '../../siteData'
 
 export function Navbar() {
-  const dropdownRef = useRef(null)
+  const menuDropdownRef = useRef(null)
+  const serviceDropdownRef = useRef(null)
   const location = useLocation()
 
   function closeDropdown() {
-    if (dropdownRef.current?.contains(document.activeElement)) {
+    if (
+      menuDropdownRef.current?.contains(document.activeElement) ||
+      serviceDropdownRef.current?.contains(document.activeElement)
+    ) {
       document.activeElement.blur()
     }
   }
@@ -27,7 +31,7 @@ export function Navbar() {
         <div className="nav-links navbar-links">
           <Link to="/#sobre-nos">{'Sobre N\u00f3s'}</Link>
 
-          <div className="menu-dropdown" ref={dropdownRef}>
+          <div className="menu-dropdown" ref={menuDropdownRef}>
             <Link
               className="dropdown-trigger"
               to="/#menus"
@@ -46,7 +50,25 @@ export function Navbar() {
             </div>
           </div>
 
-          <Link to="/#servicos-complementares">{'Servi\u00e7os'}</Link>
+          <div className="menu-dropdown" ref={serviceDropdownRef}>
+            <Link
+              className="dropdown-trigger"
+              to="/#servicos-complementares"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {'Servi\u00e7os'}
+              <span className="dropdown-chevron" aria-hidden="true" />
+            </Link>
+            <div className="dropdown-panel">
+              {serviceLinks.map((item) => (
+                <Link key={item.to} to={item.to} onClick={closeDropdown}>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <Link className="navbar-contact" to="/#contato">
             Contato
           </Link>
