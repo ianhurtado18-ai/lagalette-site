@@ -3,7 +3,48 @@ import { AnchorPills } from '../components/ui/AnchorPills'
 import { ButtonPill } from '../components/ui/ButtonPill'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { ServiceCard } from '../components/ui/ServiceCard'
+import { useGalleryMedia } from '../hooks/useGalleryMedia'
 import { FeaturePage } from './FeaturePage'
+
+function MenuSectionGallery({
+  isSplitSectionsLayout,
+  onOpenGallery,
+  section,
+}) {
+  const mediaClassName = isSplitSectionsLayout
+    ? 'menu-section-half menu-section-photo-half menu-section-gallery'
+    : 'menu-section-half menu-section-photo-half'
+  const photos = useGalleryMedia(section.photos)
+  const galleryPhotos = isSplitSectionsLayout ? photos.slice(0, 8) : photos
+
+  return (
+    <div
+      className={mediaClassName}
+      aria-label={section.imageAlt}
+    >
+      <div className="menu-photo-grid">
+        {galleryPhotos.map((media, photoIndex) => (
+          <button
+            className={`menu-photo-placeholder ${media.type === 'video' ? 'is-video' : ''}`}
+            key={media.src}
+            type="button"
+            onClick={() => onOpenGallery(section, photos, photoIndex)}
+          >
+            <img src={media.preview} alt={`${section.title} ${photoIndex + 1}`} />
+            {media.type === 'video' && <span className="menu-video-play" aria-hidden="true" />}
+            <span>{media.type === 'video' ? 'Vídeo' : 'Foto'} {photoIndex + 1}</span>
+          </button>
+        ))}
+      </div>
+      {!isSplitSectionsLayout && (
+        <>
+          <span className="about-shape about-shape-large" aria-hidden="true" />
+          <span className="about-shape about-shape-small" aria-hidden="true" />
+        </>
+      )}
+    </div>
+  )
+}
 
 export function MenuPage({ page }) {
   const isSingleFeatureLayout = page.layout === 'single-feature'
@@ -15,9 +56,7 @@ export function MenuPage({ page }) {
   const touchStartX = useRef(null)
   const touchStartY = useRef(null)
 
-  function openGallery(section, photoIndex) {
-    const photos = section.photos ?? []
-
+  function openGallery(section, photos, photoIndex) {
     setActiveGallery({
       photos,
       sectionTitle: section.title,
@@ -163,40 +202,14 @@ export function MenuPage({ page }) {
   }
 
   function renderSectionGallery(section) {
-    const mediaClassName = isSplitSectionsLayout
-      ? 'menu-section-half menu-section-photo-half menu-section-gallery'
-      : 'menu-section-half menu-section-photo-half'
-    const photos = section.photos ?? []
-    const galleryPhotos = isSplitSectionsLayout ? photos.slice(0, 8) : photos
-
     return (
-      <div
-        className={mediaClassName}
-        aria-label={section.imageAlt}
-      >
-        <div className="menu-photo-grid">
-          {galleryPhotos.map((photo, photoIndex) => (
-            <button
-              className="menu-photo-placeholder"
-              key={photo}
-              type="button"
-              onClick={() => openGallery(section, photoIndex)}
-            >
-              <img src={photo} alt={`${section.title} ${photoIndex + 1}`} />
-              <span>Foto {photoIndex + 1}</span>
-            </button>
-          ))}
-        </div>
-        {!isSplitSectionsLayout && (
-          <>
-            <span className="about-shape about-shape-large" aria-hidden="true" />
-            <span className="about-shape about-shape-small" aria-hidden="true" />
-          </>
-        )}
-      </div>
+      <MenuSectionGallery
+        isSplitSectionsLayout={isSplitSectionsLayout}
+        onOpenGallery={openGallery}
+        section={section}
+      />
     )
   }
-
   return (
     <article
       className={`page menu-page ${isSplitSectionsLayout ? 'split-menu-page' : ''}`}
@@ -270,8 +283,8 @@ export function MenuPage({ page }) {
       ) : (
         <section className="section">
           <SectionTitle
-            title="Conteudo a definir"
-            description="Esta pagina esta pronta para receber as futuras secoes."
+            title="Conteúdo a definir"
+            description="Esta página está pronta para receber as futuras seções."
           />
         </section>
       )}
@@ -304,15 +317,23 @@ export function MenuPage({ page }) {
               <span aria-hidden="true">{'\u2039'}</span>
             </button>
             <div className="gallery-image-placeholder">
-              <img
-                src={activeGallery.photos[activeGallery.photoIndex]}
-                alt={`${activeGallery.sectionTitle} ${activeGallery.photoIndex + 1}`}
-              />
+              {activeGallery.photos[activeGallery.photoIndex].type === 'video' ? (
+                <video
+                  src={activeGallery.photos[activeGallery.photoIndex].src}
+                  poster={activeGallery.photos[activeGallery.photoIndex].poster}
+                  controls
+                />
+              ) : (
+                <img
+                  src={activeGallery.photos[activeGallery.photoIndex].src}
+                  alt={`${activeGallery.sectionTitle} ${activeGallery.photoIndex + 1}`}
+                />
+              )}
             </div>
             <button
               type="button"
               className="gallery-nav-button gallery-nav-next"
-              aria-label="Proxima foto"
+              aria-label="Próxima foto"
               onClick={showNextPhoto}
             >
               <span aria-hidden="true">{'\u203a'}</span>

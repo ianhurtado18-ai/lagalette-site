@@ -1,11 +1,22 @@
 import { Outlet } from 'react-router-dom'
-import { homeMenuCards } from '../../siteData'
+import { homeMenuCards, simplePages } from '../../siteData'
 import { CTASection } from '../ui/CTASection'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 import { ScrollToHash } from './ScrollToHash'
 
 export function Layout() {
+  const contactNavigationItems = [
+    ...homeMenuCards,
+    ...['corporativo', 'personalizado']
+      .map((path) => simplePages.find((page) => page.path === path))
+      .filter(Boolean)
+      .map((page) => ({
+        title: page.title,
+        to: `/${page.path}`,
+      })),
+  ]
+
   return (
     <>
       <ScrollToHash />
@@ -17,7 +28,7 @@ export function Layout() {
         id="contato"
         buttonLabel="Solicitar orçamento"
         buttonTo="https://wa.me/5511986396891"
-        navigationItems={homeMenuCards}
+        navigationItems={contactNavigationItems}
       />
       <a
         className="whatsapp-floating-button"

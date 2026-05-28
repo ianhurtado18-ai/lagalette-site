@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SectionTitle } from '../components/ui/SectionTitle'
+import { useGalleryMedia } from '../hooks/useGalleryMedia'
 
 export function FeaturePage({ page }) {
-  const photos = page.photos ?? []
+  const photos = useGalleryMedia(page.photos)
   const totalPhotos = photos.length
   const galleryPhotos = photos.slice(0, page.galleryLimit ?? 8)
   const [activePhotoIndex, setActivePhotoIndex] = useState(null)
@@ -86,6 +87,27 @@ export function FeaturePage({ page }) {
     })
   }
 
+  function renderGallery() {
+    return (
+      <div className="single-feature-gallery" aria-label={page.imageAlt}>
+        <div className="menu-photo-grid">
+          {galleryPhotos.map((photo, photoIndex) => (
+            <button
+              className={`menu-photo-placeholder ${photo.type === 'video' ? 'is-video' : ''}`}
+              key={photo.src}
+              type="button"
+              onClick={() => setActivePhotoIndex(photoIndex)}
+            >
+              <img src={photo.preview} alt={`${page.title} ${photoIndex + 1}`} />
+              {photo.type === 'video' && <span className="menu-video-play" aria-hidden="true" />}
+              <span>{photo.type === 'video' ? 'Vídeo' : 'Foto'} {photoIndex + 1}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   useEffect(() => {
     if (!hasActivePhoto) {
       return
@@ -136,32 +158,23 @@ export function FeaturePage({ page }) {
       </header>
 
       <section className="single-feature-section">
-        {isGalleryLeftLayout && (
-          <div className="single-feature-gallery" aria-label={page.imageAlt}>
-            <div className="menu-photo-grid">
-              {galleryPhotos.map((photo, photoIndex) => (
-                <button
-                  className="menu-photo-placeholder"
-                  key={photo}
-                  type="button"
-                  onClick={() => setActivePhotoIndex(photoIndex)}
-                >
-                  <img src={photo} alt={`${page.title} ${photoIndex + 1}`} />
-                  <span>Foto {photoIndex + 1}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        {isGalleryLeftLayout && renderGallery()}
 
         <div className="single-feature-copy">
           {page.body && <p>{page.body}</p>}
+          {page.items?.length > 0 && (
+            <ul className="single-feature-list">
+              {page.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
           {page.highlights && (
             <div className="single-feature-highlights">
               {page.highlights.map((highlight) => (
                 <article className="single-feature-highlight" key={highlight.title}>
                   <h2>{highlight.title}</h2>
-                  <p>{highlight.text}</p>
+                  {highlight.text && <p>{highlight.text}</p>}
                   {highlight.note && <span>{highlight.note}</span>}
                 </article>
               ))}
@@ -172,23 +185,7 @@ export function FeaturePage({ page }) {
           )}
         </div>
 
-        {!isGalleryLeftLayout && (
-          <div className="single-feature-gallery" aria-label={page.imageAlt}>
-          <div className="menu-photo-grid">
-            {galleryPhotos.map((photo, photoIndex) => (
-              <button
-                className="menu-photo-placeholder"
-                key={photo}
-                type="button"
-                onClick={() => setActivePhotoIndex(photoIndex)}
-              >
-                <img src={photo} alt={`${page.title} ${photoIndex + 1}`} />
-                <span>Foto {photoIndex + 1}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-        )}
+        {!isGalleryLeftLayout && renderGallery()}
 
         {!isGalleryLeftLayout && page.closing && (
           <p className="single-feature-closing">{renderClosing()}</p>
@@ -223,15 +220,23 @@ export function FeaturePage({ page }) {
               <span aria-hidden="true">{'\u2039'}</span>
             </button>
             <div className="gallery-image-placeholder">
-              <img
-                src={photos[activePhotoIndex]}
-                alt={`${page.title} ${activePhotoIndex + 1}`}
-              />
+              {photos[activePhotoIndex].type === 'video' ? (
+                <video
+                  src={photos[activePhotoIndex].src}
+                  poster={photos[activePhotoIndex].poster}
+                  controls
+                />
+              ) : (
+                <img
+                  src={photos[activePhotoIndex].src}
+                  alt={`${page.title} ${activePhotoIndex + 1}`}
+                />
+              )}
             </div>
             <button
               type="button"
               className="gallery-nav-button gallery-nav-next"
-              aria-label="Proxima foto"
+              aria-label="Próxima foto"
               onClick={showNextPhoto}
             >
               <span aria-hidden="true">{'\u203a'}</span>

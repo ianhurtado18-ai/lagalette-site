@@ -1,8 +1,10 @@
+import { resolveGalleryMedia } from './utils/galleryMedia'
+
 const coverImage = (file) => `/gallery/covers/${file}`
 
-// Pour modifier une galerie, remplace les fichiers dans le dossier correspondant.
-// Si tu changes les noms de fichiers, adapte cette liste.
-const galleryFiles = [
+// Pour modifier une galerie, remplace les fichiers dans le dossier correspondant,
+// puis adapte uniquement la liste du dossier concerné ci-dessous.
+const defaultGalleryFiles = [
   'sample-1.jpg',
   'sample-2.jpg',
   'sample-3.jpg',
@@ -11,12 +13,61 @@ const galleryFiles = [
   'sample-6.jpg',
   'sample-7.jpg',
   'sample-8.jpg',
-  'sample-9.jpg',
-  'sample-10.jpg',
-  'sample-11.jpg',
-  'sample-12.jpg',
 ]
-const gallery = (folder) => galleryFiles.map((file) => `/gallery/${folder}/${file}`)
+
+const galleryFilesByFolder = {
+  'brasileiros-boteco': [
+    'sample-1.jpg',
+    'sample-2.jpg',
+    'sample-3.jpg',
+    'sample-4.jpg',
+    'sample-5.jpg',
+    'sample-6.jpg',
+    'sample-7.jpg',
+    'sample-8.png',
+  ],
+  'brasileiros-churrasco': [
+    '15 CHURRASCO ESPECIAL.jpg',
+    'churrasco_1.jpg',
+    'churrasco_2.jpg',
+    'churrasco_3.jpg',
+    'churrasco_4.jpg',
+    'churrasco_5.jpeg',
+    'churrasco_7.jpg',
+    'churrasco_8.jpg',
+    'Cópia de 12 FEIJOADA_CHURRASCO - PUDIM DE LEITE CONDENSADO.jpg',
+    'Foto de LA GALETTE - Nathalie.jpg',
+    'Foto de LA GALETTE - Nathalie(2).jpg',
+    'Foto de LA GALETTE - Nathalie(3).jpg',
+    'Foto de LA GALETTE - Nathalie(6).jpg',
+    'Foto de LA GALETTE - Nathalie(8).jpg',
+    'Foto de LA GALETTE - Nathalie(9).jpg',
+  ],
+  'kids-teens': [
+    'sample-1.jpg',
+    'sample-2.jpg',
+    // Exemple vidéo :
+    // { type: 'video', src: 'video-1.mp4', poster: 'video-1-poster.jpg' },
+    'sample-3.jpg',
+    'sample-4.jpg',
+    'sample-5.jpg',
+    'sample-6.jpg',
+    'sample-7.jpg',
+    'sample-8.jpg',
+    'sample-9.jpg',
+    'sample-10.jpg',
+    'sample-11.jpg',
+    'sample-12.jpg',
+  ],
+}
+
+const gallery = (folder, files = galleryFilesByFolder[folder] ?? defaultGalleryFiles) => {
+  const media = files.map((file) => resolveGalleryMedia(folder, file))
+  media.folder = folder
+  media.manifestUrl = `/gallery/${folder}/gallery.json`
+
+  return media
+}
 
 const section = (id, title, description, options = {}) => ({
   id,
@@ -39,6 +90,7 @@ const singleFeaturePage = ({
   descriptionLines,
   body,
   highlights,
+  items,
   closing,
   closingLinks,
   featureLayout,
@@ -54,6 +106,7 @@ const singleFeaturePage = ({
   descriptionLines,
   body,
   highlights,
+  items,
   closing,
   closingLinks,
   featureLayout,
@@ -90,15 +143,15 @@ export const homeMenuCards = [
   {
     title: 'Internacionais',
     description:
-      'Uma viagem gastronômica inspirada em diversas culturas para experiências sofisticadas.',
+      'Uma viagem gastronômica inspirada em diversas culturas para experiências refinadas.',
     icon: 'internacionais',
     image: coverImage('menus-internacionais.jpg'),
     to: '/internacionais',
   },
   {
-    title: 'Finger Food',
+    title: 'Finger foods & Ilhas',
     description:
-      'Elegância e sofisticação em uma seleção variada de cores e sabores, proporcionando uma experiência visual e gustativa memorável.',
+      'Elegância e requinte em combinações de cores e sabores para uma vivência visual e gustativa surpreendente.',
     icon: 'finger-food',
     image: coverImage('menus-finger-food.png'),
     to: '/finger-food',
@@ -171,17 +224,11 @@ export const clientTestimonials = [
 ]
 
 export const menuLinks = [
-  { label: 'CRÊPES', to: '/tradicionais#crepes' },
-  { label: 'MASSAS', to: '/tradicionais#massas' },
-  { label: 'RISOTTOS', to: '/tradicionais#risottos' },
-  { label: 'FEIJOADA', to: '/brasileiros#feijoada' },
-  { label: 'CHURRASCO', to: '/brasileiros#churrasco' },
-  { label: 'BOTECO', to: '/brasileiros#boteco' },
-  { label: 'FINGER FOOD', to: '/finger-food' },
-  { label: 'BRUNCH', to: '/brunchs#brunch' },
-  { label: 'FRANCÊS', to: '/internacionais#frances' },
-  { label: 'MEDITERRÂNEO', to: '/internacionais#mediterraneo' },
-  { label: 'CORPORATIVO', to: '/corporativo' },
+  ...homeMenuCards.map((card) => ({
+    label: card.title.toUpperCase(),
+    to: card.to,
+  })),
+  { label: 'CORPORATIVOS', to: '/corporativo' },
   { label: 'PERSONALIZADOS', to: '/personalizado' },
 ]
 
@@ -202,7 +249,7 @@ export const menuPages = [
       section(
         'crepes',
         'Crêpes',
-        'Crêpes francesas preparadas por nossos chefs de cozinha a partir de uma receita familiar, com massa fina e leve e recheios doces e salgados, dos clássicos aos exclusivos.',
+        'Crêpes francesas preparadas com uma receita familiar, massa fina e leve e recheios salgados e doces, dos clássicos aos exclusivos.',
         {
           versoes: 'Nas versões: Tradicional, Vip e Gourmet.',
           items: [
@@ -219,7 +266,7 @@ export const menuPages = [
       section(
         'massas',
         'Massas',
-        'Massas frescas artesanais preparadas por nossos chefs de cozinha, na hora e na frente dos convidados, com diversos temperos.',
+        'Massas frescas artesanais preparadas com diversos temperos e molhos.',
         {
           versoes: 'Nas versões: Tradicional e Gourmet.',
           items: [
@@ -235,7 +282,7 @@ export const menuPages = [
       section(
         'risottos',
         'Risottos',
-        'Risottos preparados por nossos chefs de cozinha com arroz arbóreo e diversos temperos.',
+        'Risottos preparados com arroz arbóreo e diferentes temperos.',
         {
           versoes: 'Nas versões: Tradicional e Gourmet.',
           items: [
@@ -296,8 +343,8 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Serviço volante: diversos petiscos incríveis e porções em mini louças para um toque de requinte.',
-            'Ilha gastronômica: apresentação primorosa de salgados tradicionais, pratos quentes em rechauds de barro, pães frescos, saladas, sobremesas típicas e café para complementar esse farto cardápio.',
+            'Serviço volante: diversos petiscos irresistíveis e porções em mini louças para um toque de requinte.',
+            'Ilha gastronômica: apresentação primorosa de salgados tradicionais, pratos quentes em rechauds de barro, pães frescos, saladas, sobremesas típicas e café para finalizar.',
           ],
           disclaimer:
             'Para uma festa completa e perfeita, acrescente nosso delicioso chopp e um bar de caipirinhas refrescantes.',
@@ -376,7 +423,7 @@ export const menuPages = [
             'Sobremesas típicas e café com petit-fours.',
           ],
           disclaimer:
-            'Acrescente ainda mais autenticidade com nossos vinhos e cavas espanhois.',
+            'Acrescente ainda mais autenticidade com nossos vinhos e cavas espanhóis.',
           photos: gallery('internacionais-espanhol'),
         },
       ),
@@ -392,7 +439,7 @@ export const menuPages = [
             'Mesa de sobremesas e café com petit-fours.',
           ],
           disclaimer:
-            'Múltiplas escolhas de rótulos italianos, franceses e espanhois na nossa seleção de vinhos e espumantes para enriquecer este delicioso menu.',
+            'Múltiplas escolhas de rótulos italianos, franceses e espanhóis na nossa seleção de vinhos e espumantes para enriquecer este delicioso menu.',
           photos: gallery('internacionais-mediterraneo'),
         },
       ),
@@ -403,11 +450,11 @@ export const menuPages = [
     layout: 'split-sections',
     title: 'Finger Foods & Ilhas Gastronômicas',
     description:
-      'Elegância e sofisticação em uma seleção variada de cores e sabores, proporcionando uma experiência visual e gustativa memorável.',
+      'Elegância e requinte em combinações de cores e sabores para uma vivência visual e gustativa surpreendente.',
     sections: [
       section(
         'cocktail-volante',
-        'Cocktail Volante de Finger Foods',
+        'Cocktails',
         '',
         {
           versoes: '',
@@ -422,13 +469,13 @@ export const menuPages = [
       ),
       section(
         'ilha-gastronomica',
-        'Em Ilha',
+        'Ilhas',
         'Sofisticação em diferentes opções de acordo com o estilo do evento e uma apresentação sempre primorosa e criativa.',
         {
           versoes: '',
           items: ['Ilha de finger foods: combinações irresistíveis de cores e sabores em sticks, taças, verrines e mini louças.',
             'Ilha gastronômica: finger foods, terrines, dips, queijos, frios, mini pães, toasts, frutas, nuts…elaborados com ingredientes frescos e sofisticados.',
-            'Grazing table: apresentação em material  rústico, natural e orgânico que valorizam nossos arranjos de queijos finos, frios fatiados, frutas frescas e nuts crocantes e complementos como mini pães, dips e geleias.'
+            'Grazing table: apresentação em material rústico, natural e orgânico que valorizam nossos arranjos de queijos finos, frios fatiados, frutas frescas e nuts crocantes e complementos como mini pães, dips e geleias.'
 
           ],
           disclaimer:
@@ -468,12 +515,12 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'No café da manhã, bebidas quentes e frias, mini-sanduíches, salgadinhos assados, frutas, iogurte, bolo caseiro e doces.',
-            'Na hora do almoço, tortas, massas e saladas.',
+            'No café da manhã, bebidas quentes e frias, mini-sanduíches, salgadinhos, frutas, bolos e doces.',
+            'No almoço, tortas, massas e saladas.',
             'Na finalização, sobremesas e café.',
           ],
           disclaimer:
-            'Na hora do almoço, surpreenda servindo um dos nossos espumantes.',
+            'No almoço, surpreenda servindo um dos nossos espumantes.',
           photos: gallery('brunchs-brunch'),
         },
       ),
@@ -508,7 +555,8 @@ export const menuPages = [
     highlights: [
       {
         title: 'Cocktail Volante',
-        text: '3 cardápios diferentes, elaborados com uma variedade de opções criativas e saborosas para agradar pequenos e grandes: cocktail tradicional, comidinhas saudáveis e lanchonete.',
+        text: 'Diferentes cardápios elaborados com uma variedade de opções saborosas para agradar pequenos e grandes.',
+        note: 'Nas versões: tradicional, saudável e lanchonete.',
       },
       {
         title: 'Hamburgueria',
@@ -596,21 +644,49 @@ export const menuPages = [
 export const simplePages = [
   singleFeaturePage({
     path: 'corporativo',
-    title: 'Corporativo',
+    title: 'Corporativos',
+    featureLayout: 'gallery-left',
+    galleryLimit: 12,
     description:
       'Menus específicos para empresas, em diversos serviços como coffees, almoços, happy-hours, cocktails e jantares.',
-    body:
-      'Coffee break: uma pausa para descontrair e conversar merece um bom café ou um suco refrescante com mini sanduíches, salgados, bolos caseiros e doces diversos. Almoço: variado e copioso, com pratos quentes, guarnições e saladas para um momento agradável. Cocktail e happy hour: salgados artesanais e finger foods elegantes e criativos, ideais para inaugurações, vernissages, comemorações diversas ou para o final de um longo dia de trabalho.',
+    body: '',
+    highlights: [
+      {
+        title: 'Welcome Coffee & Coffee Break',
+        text: 'Uma pausa para descontrair e conversar merece um bom café ou um suco refrescante com deliciosos mini sanduíches, salgados, bolos caseiros e doces diversos.',
+      },
+      {
+        title: 'Almoço',
+        text: 'Variado e copioso com pratos quentes, guarnições e saladas para um momento agradável e cheio de sabor para relaxar.',
+      },
+      {
+        title: 'Cocktail & Happy Hour',
+        text: 'Salgados artesanais e finger foods elegantes e criativos em combinações surpreendentes de cores e sabores.',
+      },
+    ],
+    closing:
+      'Nos cocktails e happy-hours, o bar de drinks, um chopp gelado, ou ainda, um bom vinho ou espumante serão bem-vindos e apreciados por todos.',
     folder: 'corporativo',
     imageAlt: 'Galeria de eventos corporativos',
   }),
   singleFeaturePage({
     path: 'personalizado',
     title: 'Personalizados',
+    featureLayout: 'gallery-left',
+    galleryLimit: 12,
     description:
       'Menus elaborados de acordo com suas preferências gastronômicas e o perfil desejado para seu evento social ou corporativo.',
     body:
-      'Casamento na praia e no campo, aniversário no sítio, inauguração de clínica, aniversário da empresa, almoço country…tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo ou tema do evento. ',
+      'Tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo, tema e local do evento, que seja particular ou corporativo.',
+    items: [
+      'Almoço country.',
+      'Aniversário no sítio.',
+      'Lançamento de livro.',
+      'Aniversário da empresa.',
+      'Almoço corporativo especial.',
+      'Casamento na praia ou no campo.',
+      'Inauguração de loja, clínica e escola.',
+    ],
     folder: 'personalizado',
     imageAlt: 'Galeria de menus personalizados',
   }),

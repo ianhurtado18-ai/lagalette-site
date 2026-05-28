@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Gallery source archives can exceed GitHub's file size limit.
+public/gallery/**/*.zip
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
