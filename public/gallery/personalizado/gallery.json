@@ -1,6 +1,11 @@
 {
   "media": [
-    "1 PERSONALIZADO.jpg",
+    {
+      "type": "video",
+      "src": "1 VIDEO PERSONALIZADO.mp4",
+      "preview": "2 PERSONALIZADO.jpg",
+      "poster": "2 PERSONALIZADO.jpg"
+    },
     "2 PERSONALIZADO.jpg",
     "3 PERSONALIZADO.jpg",
     "4 PERSONALIZADO.jpg",
@@ -11,6 +16,9 @@
     "9 PERSONALIZADO.jpg",
     "10 PERSONALIZADO.jpg",
     "11 PERSONALIZADO.jpg",
-    "12 PERSONALIZADO.jpg"
+    "12 PERSONALIZADO.jpg",
+    "13 PERSONALIZADO.jpg",
+    "14 PERSONALIZADO.jpg",
+    "15 PERSONALIZADO.jpg"
   ]
 }
