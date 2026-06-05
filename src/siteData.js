@@ -183,7 +183,7 @@ export const homeServiceCards = [
   },
   {
     title: 'Doces',
-    description: 'Grande variedade de docinhos tradicionais e gourmets e mini cakes donuts lindos e irresistíveis.',
+    description: 'Grande variedade de docinhos tradicionais e gourmets e mini donuts lindos e irresistíveis.',
     icon: 'doces',
     image: coverImage('servicos-doces.jpg'),
     to: '/servicos-complementares#doces',
@@ -262,7 +262,7 @@ export const menuPages = [
             'Cocktail inicial de finger foods.',
             'Crêpes salgadas, saladas e molhos quentes.',
             'Crêpes doces, sorvete e calda.',
-            'Finalização com café com petit-fours.',
+            'Finalização com café e petit-fours.',
           ],
           disclaimer:
             'Complemente este cardápio com a sofisticação dos nossos vinhos e espumantes franceses.',
@@ -334,7 +334,7 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Espetinhos: preparados com ingredientes de primeira linha e servidos com diversas guarnições. Finalização com sobremesa e café.',
+            'Espetinhos: preparados com ingredientes de primeira linha e servidos com diferentes guarnições. Finalização com sobremesa e café.',
             'Em peças: cortes nobres, bovinos e suínos, bem como os indispensáveis queijo coalho, pão de alho e linguiças artesanais. Variedade de acompanhamentos, sobremesas e café.',
           ],
           disclaimer:
@@ -359,7 +359,7 @@ export const menuPages = [
       ),
       section(
         'juninos',
-        'Juninos',
+        'Junino',
         'Junho ou julho, a festa tem que ser alegre com todas as comidinhas típicas que esperamos o ano todo.',
         {
           hideInNav: true,
@@ -382,7 +382,7 @@ export const menuPages = [
     layout: 'split-sections',
     title: 'Menus Internacionais',
     description:
-      'Uma viagem gastronômica inspirada em diversas culturas para experiências sofisticadas.',
+      'Uma viagem gastronômica inspirada em diversas culturas para experiências refinadas.',
     sections: [
       section(
         'frances',
@@ -604,9 +604,9 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Bebidas quentes, sucos naturais e águas saborizadas',
-            'Mini sanduíches e salgados diversos',
-            'Bolos caseiros, doces e frutas',
+            'Bebidas quentes, sucos naturais e águas saborizadas.',
+            'Mini sanduíches e salgados diversos.',
+            'Bolos caseiros, doces e frutas.',
           ],
           disclaimer: '',
           photos: gallery('corporativo-welcome-coffee'),
@@ -619,11 +619,11 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Variados pratos quentes',
-            'Guarnições e saladas fartas',
-            'Sobremesas com doces e frutas',
-            'Bebidas refrescantes',
-            'Café com petits fours',
+            'Variados pratos quentes.',
+            'Guarnições e saladas.',
+            'Sobremesas com doces e frutas.',
+            'Bebidas refrescantes.',
+            'Café com petits fours.',
           ],
           disclaimer: '',
           imageAlt: 'Galeria de almoços corporativos',
@@ -637,11 +637,11 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Salgadinhos tradicionais',
-            'Finger foods frios em taças e verrines',
-            'Finger foods quentes em mini louças e bowls',
-            'Água, sucos e refrigerantes',
-            'Café gourmet com mini sobremesas',
+            'Salgadinhos tradicionais.',
+            'Finger foods frios em taças e verrines.',
+            'Finger foods quentes em mini louças e bowls.',
+            'Água, sucos e refrigerantes.',
+            'Café gourmet com mini sobremesas.',
           ],
           disclaimer:
             'Um drink em nosso bar, um chopp gelado, ou ainda, um bom vinho ou espumante serão bem-vindos e apreciados por todos.',
@@ -716,7 +716,7 @@ export const simplePages = [
     featureLayout: 'gallery-left',
     galleryLimit: 12,
     description:
-      'Tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo, tema e local do evento, que seja particular ou corporativo.',
+      'Cardápios sob medida elaborados de acordo com suas preferências e motivo da comemoração.',
     body:
       'Tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo, tema e local do evento, que seja particular ou corporativo.',
     items: [
@@ -727,6 +727,7 @@ export const simplePages = [
       'Almoço corporativo especial',
       'Casamento na praia ou no campo',
       'Inauguração de loja, clínica e escola',
+      'Encerramento de congresso internacional',
     ],
     folder: 'personalizado',
     imageAlt: 'Galeria de menus personalizados',
