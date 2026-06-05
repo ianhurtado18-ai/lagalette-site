@@ -1,16 +1,25 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg",
-                  "sample-9.jpg",
-                  "sample-10.jpg",
-                  "sample-11.jpg",
-                  "sample-12.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "1 VIDEO-INFANTIL.mp4",
+      "preview": "2 INFANTIL.jpg"
+    },
+    "3 INFANTIL.jpg",
+    "4 INFANTIL.jpg",
+    "5 INFANTIL.jpg",
+    "6 INFANTIL.jpg",
+    "7 INFANTIL.jpg",
+    "8 INFANTIL.jpg",
+    "9 INFANTIL.jpg",
+    "10 INFANTIL.jpg",
+    "11 INFANTIL.jpg",
+    "12 INFANTIL.jpg",
+    "13 INFANTIL.jpg",
+    "14 INFANTIL.jpg",
+    "15 INFANTIL.jpg",
+    "16 INFANTIL.jpg",
+    "17 INFANTIL.jpg",
+    "18 INFANTIL.png"
+  ]
 }

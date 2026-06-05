@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom'
-import { homeMenuCards, simplePages } from '../../siteData'
+import { homeMenuCards, menuPages, simplePages } from '../../siteData'
 import { CTASection } from '../ui/CTASection'
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 import { ScrollToHash } from './ScrollToHash'
 
 export function Layout() {
+  const navigationPages = [...menuPages, ...simplePages]
   const contactNavigationItems = [
     ...homeMenuCards,
     ...['corporativo', 'personalizado']
-      .map((path) => simplePages.find((page) => page.path === path))
+      .map((path) => navigationPages.find((page) => page.path === path))
       .filter(Boolean)
       .map((page) => ({
         title: page.title,

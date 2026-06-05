@@ -1,12 +1,17 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "1 VIDEO ESPANHOL EDIT.mp4",
+      "preview": "2 ESPANHOL.jpg",
+      "poster": "2 ESPANHOL.jpg"
+    },
+    "3 ESPANHOL.jpg",
+    "4 ESPANHOL.jpg",
+    "5 ESPANHOL.jpg",
+    "6 ESPANHOL.jpg",
+    "7 ESPANHOL.jpg",
+    "8 ESPANHOL.jpg",
+    "9 ESPAHNOL.jpg"
+  ]
 }

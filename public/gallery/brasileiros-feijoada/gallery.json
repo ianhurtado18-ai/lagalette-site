@@ -1,12 +1,21 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "feijoada_video_1.mp4",
+      "preview": "feijoada_12.jpg"
+    },
+    "feijoada_1.jpg",
+    "feijoada_2.jpg",
+    "feijoada_3.jpg",
+    "feijoada_4.jpg",
+    "feijoada_6.jpg",
+    "feijoada_5.jpg",
+    "feijoada_7.jpg",
+    "feijoada_8.jpg",
+    "feijoada_10.jpg",
+    "feijoada_11.jpg",
+    "feijoada_12.jpg",
+    "feijoada_13.jpg"
+  ]
 }

@@ -1,16 +1,16 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg",
-                  "sample-9.jpg",
-                  "sample-10.jpg",
-                  "sample-11.jpg",
-                  "sample-12.jpg"
-              ]
+{
+  "media": [
+    "1 PERSONALIZADO.jpg",
+    "2 PERSONALIZADO.jpg",
+    "3 PERSONALIZADO.jpg",
+    "4 PERSONALIZADO.jpg",
+    "5 PERSONALIZADO.jpg",
+    "6 PERSONALIZADO.jpg",
+    "7 PERSONALIZADO.jpg",
+    "8 PERSONALIZADO.jpg",
+    "9 PERSONALIZADO.jpg",
+    "10 PERSONALIZADO.jpg",
+    "11 PERSONALIZADO.jpg",
+    "12 PERSONALIZADO.jpg"
+  ]
 }

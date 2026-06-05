@@ -1,12 +1,15 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "massas_1.jpg",
+    "massas_2.jpg",
+    "massas_3.jpg",
+    "massas_4.jpg",
+    "massas_5.jpg",
+    "massas_6.jpg",
+    "massas_7.jpg",
+    "massas_8.jpeg",
+    "massas_9.jpeg",
+    "massas_10.jpg",
+    "massas_11.jpg"
+  ]
 }

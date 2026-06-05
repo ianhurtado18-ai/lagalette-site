@@ -768,6 +768,7 @@
   height: auto;
   display: block;
   opacity: 0.82;
+  mix-blend-mode: multiply;
 }
 
 .testimonial-panel {
@@ -1147,14 +1148,14 @@
   background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-ink) 58%, transparent));
 }
 
-.menu-photo-placeholder span {
+.menu-photo-placeholder > span:not(.menu-video-play) {
   position: absolute;
   left: 10px;
   bottom: 10px;
   z-index: 1;
 }
 
-.menu-video-play {
+.menu-photo-placeholder .menu-video-play {
   position: absolute;
   inset: 50% auto auto 50%;
   z-index: 2;
@@ -1166,7 +1167,7 @@
   transform: translate(-50%, -50%);
 }
 
-.menu-video-play::before {
+.menu-photo-placeholder .menu-video-play::before {
   content: '';
   position: absolute;
   top: 50%;

@@ -30,7 +30,13 @@ function MenuSectionGallery({
             type="button"
             onClick={() => onOpenGallery(section, photos, photoIndex)}
           >
-            <img src={media.preview} alt={`${section.title} ${photoIndex + 1}`} />
+            <img
+              src={media.preview}
+              alt={`${section.title} ${photoIndex + 1}`}
+              loading="lazy"
+              decoding="async"
+              style={media.objectPosition ? { objectPosition: media.objectPosition } : undefined}
+            />
             {media.type === 'video' && <span className="menu-video-play" aria-hidden="true" />}
             <span>{media.type === 'video' ? 'Vídeo' : 'Foto'} {photoIndex + 1}</span>
           </button>
@@ -321,12 +327,14 @@ export function MenuPage({ page }) {
                 <video
                   src={activeGallery.photos[activeGallery.photoIndex].src}
                   poster={activeGallery.photos[activeGallery.photoIndex].poster}
+                  autoPlay
                   controls
                 />
               ) : (
                 <img
                   src={activeGallery.photos[activeGallery.photoIndex].src}
                   alt={`${activeGallery.sectionTitle} ${activeGallery.photoIndex + 1}`}
+                  decoding="async"
                 />
               )}
             </div>

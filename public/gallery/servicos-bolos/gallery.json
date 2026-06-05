@@ -1,12 +1,15 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "1 BOLO.jpg",
+    "2 BOLO.jpg",
+    "3 BOLO.jpg",
+    "4 BOLO.jpg",
+    "5 BOLO.jpg",
+    "6 BOLO.jpg",
+    "7 BOLO.jpg",
+    "8 BOLO.jpg",
+    "9 BOLO.jpg",
+    "10 BOLO.jpg",
+    "11 BOLO.jpg"
+  ]
 }

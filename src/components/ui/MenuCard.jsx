@@ -7,7 +7,7 @@ function MenuCardIcon({ icon }) {
 
   return (
     <span className="menu-card-icon menu-card-icon-image" aria-hidden="true">
-      <img src={`/menu-icons/${icon}.png`} alt="" />
+      <img src={`/menu-icons/${icon}.png`} alt="" loading="lazy" decoding="async" />
     </span>
   )
 }
@@ -20,6 +20,8 @@ export function MenuCard({ description, icon, image, title, to }) {
         src={image || '/gallery/cover.jpg'}
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
       />
       <div className="menu-card-body">
         <MenuCardIcon icon={icon} />

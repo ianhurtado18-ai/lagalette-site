@@ -1,12 +1,17 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "1 VIDEO - BAR.mp4",
+      "preview": "cover_video.png",
+      "poster": "cover_video.png"
+    },
+    "2 BEBIDAS.jpg",
+    "3 BEBIDAS.jpg",
+    "4 BEBIDAS.jpg",
+    "5 BEBIDAS.jpg",
+    "6 BEBIDAS.jpg",
+    "7 BAR.jpg",
+    "8 BEBIDAS.jpg"
+  ]
 }

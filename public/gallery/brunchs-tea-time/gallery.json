@@ -1,12 +1,13 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "1 TEA.jpg",
+    "2 TEA.jpg",
+    "3 TEA.jpg",
+    "4 TEA.jpg",
+    "5 TEA.jpg",
+    "6 TEA.jpg",
+    "7 TEA.jpg",
+    "8 TEA.jpg",
+    "9 TEA.jpg"
+  ]
 }

@@ -53,6 +53,8 @@ export function Home({ sections }) {
                   className="about-image"
                   src={aboutPhoto}
                   alt="Fachada histórica ligada à história da La Galette"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="about-shape about-shape-large" aria-hidden="true" />
                 <span className="about-shape about-shape-small" aria-hidden="true" />
@@ -122,8 +124,10 @@ export function Home({ sections }) {
                 <div className="trust-logo-panel" aria-label="Empresas clientes">
                   <img
                     className="trust-logo-image"
-                    src="/logos/client-logos-placeholder.svg"
+                    src="/logos/client-logos.png"
                     alt="Logos de empresas clientes"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 

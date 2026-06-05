@@ -1,12 +1,18 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "1 VIDEO BREAKFAST.mp4",
+      "preview": "2 BREAKFAST.jpg",
+      "poster": "2 BREAKFAST.jpg"
+    },
+    "3 BREAKFAST.jpg",
+    "4 BREAKFAST.jpg",
+    "5 BREAKFAST.jpg",
+    "6 BREAKFAST.jpg",
+    "7 BREAKFAST.jpg",
+    "8 BREAKFAST.jpg",
+    "9 BREAKFAST.jpg",
+    "10 BREAKFAST.jpg"
+  ]
 }

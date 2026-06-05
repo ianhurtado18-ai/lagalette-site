@@ -1,12 +1,22 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "1 DOCES.jpg",
+    "2 DOCES.jpg",
+    "3 DOCES.jpg",
+    "4 DOCES.png",
+    "5 DOCES.jpg",
+    "6 DOCES.jpg",
+    "7 DOCES.jpg",
+    "8 DOCES.jpg",
+    "9 DOCES.jpg",
+    "10 DOCES.jpg",
+    "11 DOCES.jpg",
+    "12 DOCES.jpg",
+    "13 DOCES.jpg",
+    "14 DOCES.jpg",
+    "15 DOCES.jpg",
+    "16 DOCES.jpg",
+    "17 DOCES.jpg",
+    "18 DOCES.jpg"
+  ]
 }

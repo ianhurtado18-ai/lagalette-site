@@ -137,7 +137,7 @@ export const homeMenuCards = [
     description:
       'Os sabores do Brasil em cardápios completos e cheios de tradição.',
     icon: 'brasileiros',
-    image: coverImage('menus-brasileiros.webp'),
+    image: coverImage('menus-brasileiros.jpg'),
     to: '/brasileiros',
   },
   {
@@ -160,7 +160,7 @@ export const homeMenuCards = [
     title: 'Brunch',
     description: 'Ideal em eventos diurnos com leveza e muito sabor.',
     icon: 'brunchs',
-    image: coverImage('menus-brunchs.png'),
+    image: coverImage('menus-brunchs.jpg'),
     to: '/brunchs',
   },
   {
@@ -220,6 +220,12 @@ export const clientTestimonials = [
     eventType: 'Churrasco',
     quote:
       'Tudo foi delicado, acolhedor e muito bem organizado. Aproveitamos sem nos preocupar com os detalhes.',
+  },
+  {
+    name: 'Lucas Almeida',
+    eventType: 'Finger Food',
+    quote:
+      'La Galette criou um menu fluido, generoso e perfeitamente adaptado à nossa recepção.',
   },
 ]
 
@@ -352,20 +358,21 @@ export const menuPages = [
         },
       ),
       section(
-        'outros',
-        'Outros Brasileiros',
-        'Inspirados pela riqueza da culinária nacional, oferecemos outras opções de cardápios.',
+        'juninos',
+        'Juninos',
+        'Junho ou julho, a festa tem que ser alegre com todas as comidinhas típicas que esperamos o ano todo.',
         {
           hideInNav: true,
           versoes: '',
           items: [
-            'Festa juninas e julinas: cocktail volante com tudo que não pode faltar nesse tipo de festa, uma linda mesa de doces típicos e vinho quente e quentão para se aquecer.',
-            'Buffet de escondidinhos: variedade de escondidinhos com recheios e coberturas diversas, guarnições, sobremesas e café.',
-            'Buffet brasileiro: em ilha, um apetitoso mix de pratos, acompanhamentos e sobremesas baseados nas culinárias mineira, paulista e nordestina.',
+            'Churrasco de espetinhos.',
+            'Cocktail volante de salgados diversos.',
+            'Linda mesa de doces tradicionais.',
+            'Vinho quente e quentão para se aquecer.',
           ],
           disclaimer: 'Com um chopp e uma caipirinha, a festa fica ainda mais perfeita.',
-          imageAlt: 'Galeria de outros pratos brasileiros',
-          photos: gallery('brasileiros-outros'),
+          imageAlt: 'Galeria de menus juninos',
+          photos: gallery('brasileiros-juninos'),
         },
       ),
     ],
@@ -417,7 +424,7 @@ export const menuPages = [
         {
           versoes: '',
           items: [
-            'Cocktail inicial de finger foods.',
+            'Cocktail inicial de tapas.',
             'Paella preparada por nosso chef de cozinha, na hora e na frente dos convidados.',
             'Outros pratos quentes, guarnições e saladas.',
             'Sobremesas típicas e café com petit-fours.',
@@ -584,6 +591,67 @@ export const menuPages = [
     imageAlt: 'Galeria de kids e teens',
   }),
   {
+    path: 'corporativo',
+    layout: 'split-sections',
+    title: 'Corporativos',
+    description:
+      'Inaugurações, vernissages, reuniões empresariais, congressos, palestras... para cada tipo de evento, menus específicos em diversos serviços e formatos.',
+    sections: [
+      section(
+        'welcome-coffee',
+        'Welcome coffee e Coffee-break',
+        'Uma pausa para descontrair e conversar.',
+        {
+          versoes: '',
+          items: [
+            'Bebidas quentes, sucos naturais e águas saborizadas',
+            'Mini sanduíches e salgados diversos',
+            'Bolos caseiros, doces e frutas',
+          ],
+          disclaimer: '',
+          photos: gallery('corporativo-welcome-coffee'),
+        },
+      ),
+      section(
+        'almoco',
+        'Almoço',
+        'Um momento agradável com um menu farto e cheio de sabor.',
+        {
+          versoes: '',
+          items: [
+            'Variados pratos quentes',
+            'Guarnições e saladas fartas',
+            'Sobremesas com doces e frutas',
+            'Bebidas refrescantes',
+            'Café com petits fours',
+          ],
+          disclaimer: '',
+          imageAlt: 'Galeria de almoços corporativos',
+          photos: gallery('corporativo-almoco'),
+        },
+      ),
+      section(
+        'cocktail-happy-hour',
+        'Cocktail e Happy-hour',
+        'Salgados artesanais e finger foods elegantes e criativos em combinações surpreendentes de cores e sabores.',
+        {
+          versoes: '',
+          items: [
+            'Salgadinhos tradicionais',
+            'Finger foods frios em taças e verrines',
+            'Finger foods quentes em mini louças e bowls',
+            'Água, sucos e refrigerantes',
+            'Café gourmet com mini sobremesas',
+          ],
+          disclaimer:
+            'Um drink em nosso bar, um chopp gelado, ou ainda, um bom vinho ou espumante serão bem-vindos e apreciados por todos.',
+          imageAlt: 'Galeria de cocktails e happy-hours corporativos',
+          photos: gallery('corporativo-cocktail-happy-hour'),
+        },
+      ),
+    ],
+  },
+  {
     path: 'servicos-complementares',
     layout: 'split-sections',
     title: 'Serviços Complementares',
@@ -604,16 +672,16 @@ export const menuPages = [
       section(
         'doces',
         'Doces',
-        'Grande variedade de docinhos tradicionais e gourmets e mini cakes donuts lindos e irresistíveis.',
+        'Grande variedade de docinhos tradicionais e gourmets e mini donuts lindos e irresistíveis.',
         {
           versoes: '',
           items: [
             'Docinhos: Enrolados ou em verrines, podem ser personalizados com forminhas coloridas e apliques comestíveis.',
-            'Mini cakes donut: Massa leve de bolo em forma de donut. Diversos recheios, coberturas e cores.',
+            'Mini Donuts: Massa leve de bolo em formato de donut. Diversos recheios, coberturas e cores.',
             
           ],
           disclaimer:
-            'Destaque para nossa linda torre: mini donuts, flores naturais e fitas de cetim.',
+            'Destaque para nossa linda torre de mini donuts com flores naturais e fitas de cetim.',
           photos: gallery('servicos-doces'),
         },
       ),
@@ -643,49 +711,22 @@ export const menuPages = [
 
 export const simplePages = [
   singleFeaturePage({
-    path: 'corporativo',
-    title: 'Corporativos',
-    featureLayout: 'gallery-left',
-    galleryLimit: 12,
-    description:
-      'Menus específicos para empresas, em diversos serviços como coffees, almoços, happy-hours, cocktails e jantares.',
-    body: '',
-    highlights: [
-      {
-        title: 'Welcome Coffee & Coffee Break',
-        text: 'Uma pausa para descontrair e conversar merece um bom café ou um suco refrescante com deliciosos mini sanduíches, salgados, bolos caseiros e doces diversos.',
-      },
-      {
-        title: 'Almoço',
-        text: 'Variado e copioso com pratos quentes, guarnições e saladas para um momento agradável e cheio de sabor para relaxar.',
-      },
-      {
-        title: 'Cocktail & Happy Hour',
-        text: 'Salgados artesanais e finger foods elegantes e criativos em combinações surpreendentes de cores e sabores.',
-      },
-    ],
-    closing:
-      'Nos cocktails e happy-hours, o bar de drinks, um chopp gelado, ou ainda, um bom vinho ou espumante serão bem-vindos e apreciados por todos.',
-    folder: 'corporativo',
-    imageAlt: 'Galeria de eventos corporativos',
-  }),
-  singleFeaturePage({
     path: 'personalizado',
     title: 'Personalizados',
     featureLayout: 'gallery-left',
     galleryLimit: 12,
     description:
-      'Menus elaborados de acordo com suas preferências gastronômicas e o perfil desejado para seu evento social ou corporativo.',
+      'Tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo, tema e local do evento, que seja particular ou corporativo.',
     body:
       'Tantos motivos, sonhos e ideias para criarmos menus sob medida de acordo com o estilo, tema e local do evento, que seja particular ou corporativo.',
     items: [
-      'Almoço country.',
-      'Aniversário no sítio.',
-      'Lançamento de livro.',
-      'Aniversário da empresa.',
-      'Almoço corporativo especial.',
-      'Casamento na praia ou no campo.',
-      'Inauguração de loja, clínica e escola.',
+      'Almoço country',
+      'Aniversário no sítio',
+      'Lançamento de livro',
+      'Aniversário da empresa',
+      'Almoço corporativo especial',
+      'Casamento na praia ou no campo',
+      'Inauguração de loja, clínica e escola',
     ],
     folder: 'personalizado',
     imageAlt: 'Galeria de menus personalizados',

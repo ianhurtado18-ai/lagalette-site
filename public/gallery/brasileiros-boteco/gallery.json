@@ -1,12 +1,12 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.png"
-              ]
+{
+  "media": [
+    "boteco_1.jpg",
+    "boteco_2.jpg",
+    "boteco_3.jpg",
+    "boteco_4.jpg",
+    "boteco_5.jpg",
+    "boteco_6.jpg",
+    "boteco_7.jpg",
+    "boteco_8.png"
+  ]
 }

@@ -1,12 +1,14 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "1 FINGER.jpg",
+    "2 FINGER.jpg",
+    "3 FINGER.jpg",
+    "4 FINGER.jpg",
+    "5 FINGER.jpg",
+    "6 FINGER.jpg",
+    "7 FINGER.jpg",
+    "8 FINGER.jpg",
+    "9 FINGER.jpg",
+    "10 FINGER.jpg"
+  ]
 }

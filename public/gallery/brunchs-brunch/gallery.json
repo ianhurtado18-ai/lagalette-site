@@ -1,12 +1,12 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "1 BRUNCH.jpg",
+    "2 BRUNCH.jpg",
+    "3 BRUNCH.jpg",
+    "4 BRUNCH.jpg",
+    "5 BRUNCH.jpg",
+    "6 BRUNCH.jpg",
+    "7 BRUNCH.jpg",
+    "8 BRUNCH.jpg"
+  ]
 }

@@ -12,6 +12,7 @@ export function normalizeGalleryMedia(media) {
     src: media.src,
     preview: media.poster ?? media.preview ?? media.src,
     poster: media.poster,
+    objectPosition: media.objectPosition,
   }
 }
 

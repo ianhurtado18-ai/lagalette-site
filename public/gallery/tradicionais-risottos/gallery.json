@@ -1,12 +1,12 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    "risottos_1.jpg",
+    "risottos_2.jpg",
+    "risottos_3.jpg",
+    "risottos_4.jpg",
+    "risottos_5.jpg",
+    "risottos_6.jpg",
+    "risottos_8.jpg",
+    "risottos_7.jpg"
+  ]
 }

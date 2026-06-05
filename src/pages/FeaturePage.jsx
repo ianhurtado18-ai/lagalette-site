@@ -98,7 +98,13 @@ export function FeaturePage({ page }) {
               type="button"
               onClick={() => setActivePhotoIndex(photoIndex)}
             >
-              <img src={photo.preview} alt={`${page.title} ${photoIndex + 1}`} />
+              <img
+                src={photo.preview}
+                alt={`${page.title} ${photoIndex + 1}`}
+                loading="lazy"
+                decoding="async"
+                style={photo.objectPosition ? { objectPosition: photo.objectPosition } : undefined}
+              />
               {photo.type === 'video' && <span className="menu-video-play" aria-hidden="true" />}
               <span>{photo.type === 'video' ? 'Vídeo' : 'Foto'} {photoIndex + 1}</span>
             </button>
@@ -224,12 +230,14 @@ export function FeaturePage({ page }) {
                 <video
                   src={photos[activePhotoIndex].src}
                   poster={photos[activePhotoIndex].poster}
+                  autoPlay
                   controls
                 />
               ) : (
                 <img
                   src={photos[activePhotoIndex].src}
                   alt={`${page.title} ${activePhotoIndex + 1}`}
+                  decoding="async"
                 />
               )}
             </div>

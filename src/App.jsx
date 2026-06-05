@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
+import { Seo } from './components/seo/Seo'
 import { Home } from './pages/Home'
 import { MenuPage } from './pages/MenuPage'
 import { SimplePage } from './pages/SimplePage'
@@ -7,27 +8,30 @@ import { homeSections, menuPages, simplePages } from './siteData'
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<Home sections={homeSections} />} />
+    <>
+      <Seo />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home sections={homeSections} />} />
 
-        {menuPages.map((page) => (
-          <Route
-            key={page.path}
-            path={page.path}
-            element={<MenuPage page={page} />}
-          />
-        ))}
+          {menuPages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<MenuPage page={page} />}
+            />
+          ))}
 
-        {simplePages.map((page) => (
-          <Route
-            key={page.path}
-            path={page.path}
-            element={<SimplePage page={page} />}
-          />
-        ))}
-      </Route>
-    </Routes>
+          {simplePages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<SimplePage page={page} />}
+            />
+          ))}
+        </Route>
+      </Routes>
+    </>
   )
 }
 

@@ -1,12 +1,22 @@
-﻿{
-    "media":  [
-                  "sample-1.jpg",
-                  "sample-2.jpg",
-                  "sample-3.jpg",
-                  "sample-4.jpg",
-                  "sample-5.jpg",
-                  "sample-6.jpg",
-                  "sample-7.jpg",
-                  "sample-8.jpg"
-              ]
+{
+  "media": [
+    {
+      "type": "video",
+      "src": "crepes_video_1.mp4",
+      "preview": "crepes_12.jpg",
+      "objectPosition": "50% 42%"
+    },
+    "crepes_8.jpg",
+    "crepes_2.jpg",
+    "crepes_3.jpg",
+    "crepes_4.jpg",
+    "crepes_5.png",
+    "crepes_6.jpg",
+    "crepes_7.jpg",
+    "crepes_9.jpg",
+    "crepes_10.jpg",
+    "crepes_11.jpg",
+    "crepes_12.jpg",
+    "crepes_13.jpeg"
+  ]
 }
