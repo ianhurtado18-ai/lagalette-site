@@ -11,6 +11,10 @@
   transition: transform 220ms ease;
 }
 
+.site-header.is-hidden-scroll {
+  transform: translateY(calc(-100% - 32px));
+}
+
 .navbar {
   width: min(1040px, calc(100% - 48px));
   height: 80px;
@@ -364,6 +368,10 @@
 .hero-section .hero-content h1 span,
 .hero-section .hero-content p span {
   display: block;
+}
+
+.hero-section .hero-content p span.hero-copy-mobile {
+  display: none;
 }
 
 .hero-section .hero-content h1 span {
@@ -2550,7 +2558,7 @@
     top: 12px;
   }
 
-  .site-header.is-hidden-mobile {
+  .site-header.is-hidden-scroll {
     transform: translateY(calc(-100% - 18px));
   }
 
@@ -2579,9 +2587,10 @@
     width: 100%;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px 4px;
-    align-items: stretch;
+    grid-template-columns: repeat(2, minmax(118px, 1fr));
+    gap: 4px 10px;
+    align-items: center;
+    justify-items: center;
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -2591,9 +2600,10 @@
   .nav-links a,
   .dropdown-trigger {
     width: 100%;
+    min-width: 0;
     min-height: 32px;
     justify-content: center;
-    padding: 7px 10px;
+    padding: 7px 8px;
     border-radius: 0;
     background: transparent;
     font-size: 11px;
@@ -2601,10 +2611,11 @@
   }
 
   .nav-links a.navbar-instagram {
-    width: 100%;
+    width: 34px;
+    min-width: 34px;
     grid-column: 1 / -1;
     min-height: 30px;
-    padding: 6px 10px;
+    padding: 6px;
   }
 
   .navbar-instagram-icon {
@@ -2614,14 +2625,21 @@
 
   .dropdown-trigger {
     position: relative;
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
   .dropdown-trigger .dropdown-chevron {
     position: absolute;
-    right: 6px;
-    transform: translateY(-2px) rotate(45deg) scale(0.82);
+    left: calc(50% + 32px);
+    margin-left: 0;
+    flex: 0 0 auto;
+    transform: translateY(-2px) rotate(45deg) scale(0.78);
+    transition: transform 180ms ease;
+  }
+
+  .navbar-links > .menu-dropdown:nth-of-type(2) .dropdown-chevron {
+    left: calc(50% + 42px);
   }
 
   .nav-links a:hover,
@@ -2634,6 +2652,15 @@
   .menu-dropdown {
     position: static;
     width: 100%;
+    justify-content: center;
+  }
+
+  .menu-dropdown.is-open .dropdown-trigger {
+    color: var(--color-terracotta);
+  }
+
+  .menu-dropdown.is-open .dropdown-chevron {
+    transform: translateY(1px) rotate(225deg) scale(0.78);
   }
 
   .dropdown-panel {
@@ -2692,6 +2719,8 @@
 
   .hero-content {
     width: min(390px, 100%);
+    justify-items: center;
+    text-align: center;
   }
 
   .hero-section .hero-content h1 {
@@ -2700,6 +2729,22 @@
 
   .hero-section .hero-content h1 span {
     white-space: normal;
+  }
+
+  .hero-section .hero-content p {
+    max-width: min(344px, 100%);
+  }
+
+  .hero-section .hero-content p span.hero-copy-desktop {
+    display: none;
+  }
+
+  .hero-section .hero-content p span.hero-copy-mobile {
+    display: block;
+  }
+
+  .button-pill.hero-button {
+    justify-self: center;
   }
 
   .menu-page-hero {
@@ -2794,7 +2839,8 @@
   .testimonial-panel {
     order: 3;
     justify-items: center;
-    padding-top: 0;
+    width: 100%;
+    padding: 0 18px;
   }
 
   .testimonial-slide {
@@ -2808,9 +2854,13 @@
   }
 
   .testimonial-quote {
-    max-width: 420px;
+    max-width: min(420px, 100%);
     font-size: clamp(23px, 6.4vw, 30px);
     -webkit-line-clamp: 3;
+  }
+
+  .testimonial-meta {
+    max-width: min(420px, 100%);
   }
 
   .testimonial-meta a,

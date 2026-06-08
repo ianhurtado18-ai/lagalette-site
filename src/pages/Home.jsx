@@ -146,7 +146,9 @@ export function Home({ sections }) {
           <p>
             <span>Com acompanhamento personalizado</span>
             <span>do primeiro contato ao dia do evento,</span>
-            <span>atenção aos detalhes e sabores que conquistam,</span>
+            <span className="hero-copy-desktop">atenção aos detalhes e sabores que conquistam,</span>
+            <span className="hero-copy-mobile">atenção aos detalhes</span>
+            <span className="hero-copy-mobile">e sabores que conquistam,</span>
             <span>transformamos seu evento numa vivência única e marcante.</span>
           </p>
           <ButtonPill className="hero-button" to="/#menus">

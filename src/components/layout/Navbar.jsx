@@ -5,7 +5,7 @@ import { menuLinks, serviceLinks } from '../../siteData'
 
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null)
-  const [isHiddenOnMobile, setIsHiddenOnMobile] = useState(false)
+  const [isHiddenOnScroll, setIsHiddenOnScroll] = useState(false)
   const menuDropdownRef = useRef(null)
   const serviceDropdownRef = useRef(null)
 
@@ -37,17 +37,12 @@ export function Navbar() {
     let lastScrollY = window.scrollY
 
     function handleScroll() {
-      if (!isMobileNav()) {
-        setIsHiddenOnMobile(false)
-        return
-      }
-
       const currentScrollY = window.scrollY
 
       if (currentScrollY < 24 || currentScrollY < lastScrollY - 8) {
-        setIsHiddenOnMobile(false)
+        setIsHiddenOnScroll(false)
       } else if (currentScrollY > lastScrollY + 8) {
-        setIsHiddenOnMobile(true)
+        setIsHiddenOnScroll(true)
         closeDropdown()
       }
 
@@ -91,7 +86,7 @@ export function Navbar() {
       className={[
         'site-header',
         'navbar-shell',
-        isHiddenOnMobile ? 'is-hidden-mobile' : '',
+        isHiddenOnScroll ? 'is-hidden-scroll' : '',
       ]
         .filter(Boolean)
         .join(' ')}
