@@ -104,6 +104,7 @@ export function Home({ sections }) {
         setGoogleReviews(data.reviews)
         setGoogleReviewSummary({
           googleMapsUri: data.googleMapsUri,
+          googleSearchUri: data.googleSearchUri,
           rating: data.rating,
           userRatingCount: data.userRatingCount,
         })
@@ -244,7 +245,11 @@ export function Home({ sections }) {
                   {isGoogleReview && googleReviewSummary ? (
                     <a
                       className="google-review-summary"
-                      href={googleReviewSummary.googleMapsUri || 'https://www.google.com/maps'}
+                      href={
+                        googleReviewSummary.googleSearchUri ||
+                        googleReviewSummary.googleMapsUri ||
+                        'https://www.google.com'
+                      }
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -273,9 +278,14 @@ export function Home({ sections }) {
                     <div className="testimonial-meta">
                       <strong>{testimonial.name || testimonial.author}</strong>
                       {!isGoogleReview ? <span>{testimonial.eventType}</span> : null}
-                      {isGoogleReview && googleReviewSummary?.googleMapsUri ? (
+                      {isGoogleReview &&
+                      (googleReviewSummary?.googleSearchUri ||
+                        googleReviewSummary?.googleMapsUri) ? (
                         <a
-                          href={googleReviewSummary.googleMapsUri}
+                          href={
+                            googleReviewSummary.googleSearchUri ||
+                            googleReviewSummary.googleMapsUri
+                          }
                           target="_blank"
                           rel="noreferrer"
                         >

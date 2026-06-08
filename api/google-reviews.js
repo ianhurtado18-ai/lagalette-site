@@ -18,6 +18,16 @@ function normalizeReview(review) {
   }
 }
 
+function getGoogleSearchUri(googleMapsUri) {
+  try {
+    const cid = new URL(googleMapsUri).searchParams.get('cid')
+
+    return cid ? `https://www.google.com/search?ludocid=${cid}` : googleMapsUri
+  } catch {
+    return googleMapsUri
+  }
+}
+
 export default async function handler(request, response) {
   if (request.method !== 'GET') {
     response.setHeader('Allow', 'GET')
@@ -63,6 +73,7 @@ export default async function handler(request, response) {
     return response.status(200).json({
       placeName: place.displayName?.text || 'La Galette Buffet',
       googleMapsUri: place.googleMapsUri || '',
+      googleSearchUri: place.googleMapsUri ? getGoogleSearchUri(place.googleMapsUri) : '',
       rating: place.rating || null,
       userRatingCount: place.userRatingCount || null,
       reviews,
