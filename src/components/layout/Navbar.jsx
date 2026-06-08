@@ -63,6 +63,29 @@ export function Navbar() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!activeDropdown) {
+      return undefined
+    }
+
+    function handlePointerDown(event) {
+      if (
+        menuDropdownRef.current?.contains(event.target) ||
+        serviceDropdownRef.current?.contains(event.target)
+      ) {
+        return
+      }
+
+      closeDropdown()
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+    }
+  }, [activeDropdown])
+
   return (
     <header
       className={[
