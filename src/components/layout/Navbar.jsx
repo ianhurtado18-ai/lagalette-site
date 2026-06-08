@@ -123,11 +123,26 @@ export function Navbar() {
               <span className="dropdown-chevron" aria-hidden="true" />
             </Link>
             <div className="dropdown-panel">
-              {menuLinks.map((item) => (
-                <Link key={item.to} to={item.to} onClick={closeDropdown}>
-                  {item.label}
-                </Link>
-              ))}
+              {menuLinks.map((item) =>
+                item.children?.length ? (
+                  <div className="dropdown-group" key={item.to}>
+                    <Link className="dropdown-group-link" to={item.to} onClick={closeDropdown}>
+                      {item.label}
+                    </Link>
+                    <div className="dropdown-submenu">
+                      {item.children.map((child) => (
+                        <Link key={child.to} to={child.to} onClick={closeDropdown}>
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link key={item.to} to={item.to} onClick={closeDropdown}>
+                    {item.label}
+                  </Link>
+                ),
+              )}
             </div>
           </div>
 

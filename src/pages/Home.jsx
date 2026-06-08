@@ -12,11 +12,11 @@ const faqHighlightTerms = [
   '4 e 5 horas',
   '2 horas adicionais',
   'hora extra por profissional',
-  'uniforme branco',
   'Cardápios infantis',
   'Demais cardápios',
   'finger foods',
   'bebidas não alcoólicas',
+  '50% do valor integral',
   'vegetarianos',
   'veganos',
   'solicitação prévia',
@@ -47,6 +47,23 @@ function renderFaqText(text) {
 
     return isHighlighted ? <strong key={`${part}-${index}`}>{part}</strong> : part
   })
+}
+
+function renderFaqAnswerBlock(block) {
+  if (typeof block === 'string') {
+    return <p key={block}>{renderFaqText(block)}</p>
+  }
+
+  return (
+    <div className="faq-answer-group" key={block.label}>
+      <strong className="faq-answer-label">{block.label}</strong>
+      <ul className="faq-answer-list">
+        {block.items.map((item) => (
+          <li key={item}>{renderFaqText(item)}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export function Home({ sections }) {
@@ -219,13 +236,11 @@ export function Home({ sections }) {
         />
 
         <div className="faq-list">
-          {faqItems.map((item, index) => (
-            <details className="faq-item" key={item.question} open={index === 0}>
+          {faqItems.map((item) => (
+            <details className="faq-item" key={item.question}>
               <summary>{item.question}</summary>
               <div className="faq-answer">
-                {item.answer.map((paragraph) => (
-                  <p key={paragraph}>{renderFaqText(paragraph)}</p>
-                ))}
+                {item.answer.map((block) => renderFaqAnswerBlock(block))}
               </div>
             </details>
           ))}

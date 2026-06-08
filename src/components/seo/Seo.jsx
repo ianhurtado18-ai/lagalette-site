@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { faqItems } from '../../siteData'
 
 const siteUrl = 'https://www.lagalette.com.br'
 const siteName = 'La Galette Buffet'
@@ -79,6 +80,31 @@ const structuredData = {
   sameAs: ['https://www.instagram.com/lagalettefestas/'],
 }
 
+function getFaqAnswerText(answer) {
+  return answer
+    .map((block) => {
+      if (typeof block === 'string') {
+        return block
+      }
+
+      return `${block.label}: ${block.items.join('; ')}.`
+    })
+    .join(' ')
+}
+
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: getFaqAnswerText(item.answer),
+    },
+  })),
+}
+
 function ensureMeta(selector, createElement) {
   const existing = document.head.querySelector(selector)
 
@@ -156,7 +182,27 @@ export function Seo() {
       return jsonLd
     })
     script.textContent = JSON.stringify(structuredData)
-  }, [canonicalUrl, metadata.description, metadata.title])
+
+    const faqScript = document.head.querySelector(
+      'script[type="application/ld+json"][data-seo="faq"]',
+    )
+
+    if (pathname === '/') {
+      const faqJsonLd =
+        faqScript ??
+        (() => {
+          const jsonLd = document.createElement('script')
+          jsonLd.setAttribute('type', 'application/ld+json')
+          jsonLd.setAttribute('data-seo', 'faq')
+          document.head.appendChild(jsonLd)
+          return jsonLd
+        })()
+
+      faqJsonLd.textContent = JSON.stringify(faqStructuredData)
+    } else {
+      faqScript?.remove()
+    }
+  }, [canonicalUrl, metadata.description, metadata.title, pathname])
 
   return null
 }

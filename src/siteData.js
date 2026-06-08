@@ -246,15 +246,29 @@ export const faqItems = [
   {
     question: 'Os profissionais trabalham uniformizados?',
     answer: [
-      'Sim. Nossos garçons vestem calça preta, avental longo preto, camisa e gravata, sempre com apresentação impecável. A equipe de cozinha trabalha com uniforme branco, seguindo as normas de higiene e segurança alimentar.',
+      'Sim. A vestimenta dos nossos garçons é preta: calça, avental longo, camisa e gravata. A equipe de cozinha trabalha com uniforme branco, seguindo as normas de higiene e segurança alimentar.',
     ],
   },
   {
     question: 'A partir de que idade as crianças são cobradas?',
     answer: [
       'A cobrança varia conforme o cardápio escolhido.',
-      'Cardápios infantis: até 3 anos, gratuito; de 4 a 6 anos, 50% do valor; a partir de 7 anos, valor integral.',
-      'Demais cardápios: até 4 anos, gratuito; de 5 a 9 anos, 50% do valor; a partir de 10 anos, valor integral.',
+      {
+        label: 'Cardápios infantis',
+        items: [
+          'até 3 anos: gratuito',
+          'de 4 a 6 anos: 50% do valor',
+          'a partir de 7 anos: valor integral',
+        ],
+      },
+      {
+        label: 'Demais cardápios',
+        items: [
+          'até 4 anos: gratuito',
+          'de 5 a 9 anos: 50% do valor',
+          'a partir de 10 anos: valor integral',
+        ],
+      },
     ],
   },
   {
@@ -266,7 +280,7 @@ export const faqItems = [
   {
     question: 'Vocês têm opções para convidados vegetarianos e veganos?',
     answer: [
-      'Sim. Todos os nossos cardápios já incluem itens vegetarianos. Para convidados veganos, podemos incluir opções específicas mediante solicitação prévia.',
+      'Sim. Todos os nossos cardápios já incluem alimentos vegetarianos. Para convidados veganos, podemos incluir opções específicas mediante solicitação prévia.',
     ],
   },
   {
@@ -296,9 +310,9 @@ export const faqItems = [
     ],
   },
   {
-    question: 'Posso acrescentar meus próprios alimentos ao buffet?',
+    question: 'Posso acrescentar meus próprios alimentos ou bebidas no buffet?',
     answer: [
-      'Sim, você pode acrescentar o que quiser. Pedimos apenas que nos avise com antecedência, pois precisamos providenciar o material necessário para servir o que você nos fornecer, como louças, suportes e utensílios específicos. Esses itens são alugados em empresas especializadas, e o custo é cobrado à parte.',
+      'Sim. Pedimos apenas que nos avise com antecedência, pois precisamos providenciar o material necessário para servir o que você nos fornecer, como louças, suportes e utensílios específicos. Esses itens são alugados em empresas especializadas, e o custo é cobrado à parte.',
     ],
   },
   {
@@ -328,20 +342,17 @@ export const faqItems = [
     ],
   },
   {
+    question: 'Terei monitores de recreação e músicos no meu evento. Vocês cobram?',
+    answer: [
+      'Sim. Qualquer outro prestador de serviço que consumir alimentos e bebidas é cobrado 50% do valor integral por pessoa.',
+    ],
+  },
+  {
     question: 'Como posso ter garantia de que a data está reservada para mim?',
     answer: [
       'Para garantir a sua data, formalizamos tudo com um contrato completo e detalhado, e pedimos o pagamento de um sinal para confirmar a reserva. Assim você fica tranquila sabendo que tudo está assegurado para o seu evento.',
     ],
   },
-]
-
-export const menuLinks = [
-  ...homeMenuCards.map((card) => ({
-    label: card.title.toUpperCase(),
-    to: card.to,
-  })),
-  { label: 'CORPORATIVOS', to: '/corporativo' },
-  { label: 'PERSONALIZADOS', to: '/personalizado' },
 ]
 
 export const serviceLinks = [
@@ -838,4 +849,28 @@ export const simplePages = [
     folder: 'personalizado',
     imageAlt: 'Galeria de menus personalizados',
   }),
+]
+
+const menuSubmenuPaths = ['tradicionais', 'brasileiros', 'internacionais']
+
+export const menuLinks = [
+  ...homeMenuCards.map((card) => {
+    const page = menuPages.find((menuPage) => `/${menuPage.path}` === card.to)
+    const children = menuSubmenuPaths.includes(page?.path)
+      ? page.sections
+          .filter((sectionItem) => !sectionItem.hideInNav)
+          .map((sectionItem) => ({
+            label: sectionItem.title,
+            to: `${card.to}#${sectionItem.id}`,
+          }))
+      : undefined
+
+    return {
+      label: card.title.toUpperCase(),
+      to: card.to,
+      children,
+    }
+  }),
+  { label: 'CORPORATIVOS', to: '/corporativo' },
+  { label: 'PERSONALIZADOS', to: '/personalizado' },
 ]
