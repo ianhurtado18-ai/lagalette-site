@@ -2302,6 +2302,29 @@
     gap: 28px;
   }
 
+  .menu-page-corporativo .menu-page-links a {
+    min-height: 38px;
+    padding: 8px 9px;
+    font-size: 11px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .menu-page-finger-food .menu-page-hero-content {
+    width: min(330px, calc(100% - 48px));
+  }
+
+  .menu-page-finger-food .menu-page-hero h1 {
+    max-width: 330px;
+    font-size: clamp(38px, 11.2vw, 48px);
+    text-wrap: balance;
+  }
+
+  .single-feature-page-kids-teens .single-feature-hero .section-title h1,
+  .single-feature-page-personalizado .single-feature-hero .section-title h1 {
+    font-size: clamp(42px, 13.4vw, 58px);
+  }
+
   .anchor-pills {
     min-width: 0;
     grid-template-columns: repeat(3, minmax(0, 1fr));

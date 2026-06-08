@@ -148,6 +148,7 @@ export function FeaturePage({ page }) {
     <article
       className={[
         'page split-menu-page single-feature-page',
+        `single-feature-page-${page.path}`,
         isGalleryLeftLayout ? 'single-feature-page-gallery-left' : '',
       ].filter(Boolean).join(' ')}
     >

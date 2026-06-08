@@ -218,7 +218,12 @@ export function MenuPage({ page }) {
   }
   return (
     <article
-      className={`page menu-page ${isSplitSectionsLayout ? 'split-menu-page' : ''}`}
+      className={[
+        'page',
+        'menu-page',
+        `menu-page-${page.path}`,
+        isSplitSectionsLayout ? 'split-menu-page' : '',
+      ].filter(Boolean).join(' ')}
     >
       {!isSplitSectionsLayout && (
         <header className="page-header">
