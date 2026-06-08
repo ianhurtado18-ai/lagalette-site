@@ -903,7 +903,7 @@
 }
 
 .testimonial-slide {
-  min-height: clamp(310px, 30vw, 390px);
+  min-height: clamp(205px, 20vw, 270px);
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   gap: 22px;
@@ -914,36 +914,53 @@
   width: fit-content;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--color-terracotta);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  gap: 9px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-terracotta) 18%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-surface) 48%, transparent);
+  color: var(--color-brown);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
   line-height: 1.2;
   text-decoration: none;
-  text-transform: uppercase;
   transition:
+    border-color 180ms ease,
+    background 180ms ease,
     color 180ms ease,
     transform 180ms ease;
 }
 
-.google-review-summary::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
 .google-review-summary:hover {
+  border-color: color-mix(in srgb, var(--color-terracotta) 34%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 72%, transparent);
   color: var(--color-terracotta-dark);
   transform: translateY(-1px);
+}
+
+.google-review-source {
+  color: var(--color-muted);
+}
+
+.google-review-rating {
+  color: var(--color-terracotta-dark);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.google-review-stars {
+  color: var(--color-terracotta);
+  font-size: 11px;
+  letter-spacing: 0.08em;
 }
 
 .google-review-summary strong {
   color: var(--color-muted);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .testimonial-quote {
@@ -956,7 +973,7 @@
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
 }
 
 .testimonial-meta {
@@ -2754,7 +2771,7 @@
   }
 
   .testimonial-slide {
-    min-height: 300px;
+    min-height: 220px;
     justify-items: center;
   }
 
@@ -2766,7 +2783,7 @@
   .testimonial-quote {
     max-width: 420px;
     font-size: clamp(26px, 7.3vw, 34px);
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 3;
   }
 
   .testimonial-meta a,

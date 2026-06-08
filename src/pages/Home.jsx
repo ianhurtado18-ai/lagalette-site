@@ -248,10 +248,14 @@ export function Home({ sections }) {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <span>
-                        {googleReviewSummary.rating
-                          ? `${googleReviewSummary.rating.toFixed(1)} no Google`
-                          : 'Avaliações Google'}
+                      <span className="google-review-source">Google Reviews</span>
+                      {googleReviewSummary.rating ? (
+                        <span className="google-review-rating">
+                          {googleReviewSummary.rating.toFixed(1)}
+                        </span>
+                      ) : null}
+                      <span className="google-review-stars" aria-hidden="true">
+                        ★★★★★
                       </span>
                       {googleReviewSummary.userRatingCount ? (
                         <strong>{googleReviewSummary.userRatingCount} avaliações</strong>
@@ -268,18 +272,14 @@ export function Home({ sections }) {
                     </p>
                     <div className="testimonial-meta">
                       <strong>{testimonial.name || testimonial.author}</strong>
-                      <span>
-                        {isGoogleReview
-                          ? `${testimonial.rating || 5} estrelas no Google`
-                          : testimonial.eventType}
-                      </span>
+                      {!isGoogleReview ? <span>{testimonial.eventType}</span> : null}
                       {isGoogleReview && googleReviewSummary?.googleMapsUri ? (
                         <a
                           href={googleReviewSummary.googleMapsUri}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          Ver avaliações no Google
+                          Ler avaliação completa no Google
                         </a>
                       ) : null}
                     </div>
