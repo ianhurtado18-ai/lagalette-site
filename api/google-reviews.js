@@ -22,7 +22,17 @@ function getGoogleSearchUri(googleMapsUri) {
   try {
     const cid = new URL(googleMapsUri).searchParams.get('cid')
 
-    return cid ? `https://www.google.com/search?ludocid=${cid}` : googleMapsUri
+    if (!cid) {
+      return googleMapsUri
+    }
+
+    const searchParams = new URLSearchParams({
+      q: 'LA GALETTE BUFFET SP Avis',
+      ludocid: cid,
+      lkt: 'LocalPoiReviews',
+    })
+
+    return `https://www.google.com/search?${searchParams.toString()}#lkt=LocalPoiReviews`
   } catch {
     return googleMapsUri
   }
