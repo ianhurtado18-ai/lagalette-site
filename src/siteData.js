@@ -246,7 +246,7 @@ export const faqItems = [
   {
     question: 'Os profissionais trabalham uniformizados?',
     answer: [
-      'Sim. A vestimenta dos nossos garçons é preta: calça, avental longo, camisa e gravata. A equipe de cozinha trabalha com uniforme branco, seguindo as normas de higiene e segurança alimentar.',
+      'Sim. Garçons em uniforme preto: calça, avental longo, camisa e gravata. A equipe de cozinha trabalha com uniforme branco, seguindo as normas de higiene e segurança alimentar.',
     ],
   },
   {
@@ -254,19 +254,19 @@ export const faqItems = [
     answer: [
       'A cobrança varia conforme o cardápio escolhido.',
       {
-        label: 'Cardápios infantis',
+        label: 'Cardápios infantis:',
         items: [
-          'até 3 anos: gratuito',
-          'de 4 a 6 anos: 50% do valor',
-          'a partir de 7 anos: valor integral',
+          'até 3 anos: cortesia.',
+          'de 4 a 6 anos: 50% do valor.',
+          'a partir de 7 anos: valor integral.',
         ],
       },
       {
-        label: 'Demais cardápios',
+        label: 'Demais cardápios:',
         items: [
-          'até 4 anos: gratuito',
-          'de 5 a 9 anos: 50% do valor',
-          'a partir de 10 anos: valor integral',
+          'até 4 anos: cortesia.',
+          'de 5 a 9 anos: 50% do valor.',
+          'a partir de 10 anos: valor integral.',
         ],
       },
     ],
@@ -292,7 +292,7 @@ export const faqItems = [
   {
     question: 'Os copos e taças estão inclusos?',
     answer: [
-      'Incluímos copos para água, sucos, bebidas não alcoólicas e cerveja. As taças para vinho e espumante são cobradas à parte, exceto se você contratar nosso serviço de vinhos e espumantes. Nesse caso, as taças já estão inclusas.',
+      'Incluímos copos para bebidas não alcoólicas e cerveja. As taças para vinho e espumante são cobradas à parte, exceto se você contratar nosso serviço de vinhos e espumantes. Nesse caso, as taças já estão inclusas.',
     ],
   },
   {
@@ -305,7 +305,7 @@ export const faqItems = [
   {
     question: 'Se eu fornecer minhas próprias bebidas alcoólicas, vocês servem?',
     answer: [
-      'Sim. Nossos garçons são capacitados para servir qualquer bebida alcoólica que você fornecer. A exceção é a preparação de drinks e o serviço de chopp, pois exigem dedicação exclusiva e comprometem o andamento do serviço.',
+      'Sim. Nossos garçons servem qualquer bebida alcoólica que você fornecer. A exceção é a preparação de drinks e o serviço de chopp, pois exigem dedicação exclusiva e comprometem o andamento do serviço.',
       'Para isso, você pode contratar separadamente um garçom especializado em chopp e nosso bar de drinks.',
     ],
   },

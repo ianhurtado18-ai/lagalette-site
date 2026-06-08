@@ -12,23 +12,33 @@ const faqHighlightTerms = [
   '4 e 5 horas',
   '2 horas adicionais',
   'hora extra por profissional',
+  'Garçons em uniforme preto',
+  'cozinha',
+  'uniforme branco',
   'Cardápios infantis',
   'Demais cardápios',
-  'finger foods',
-  'bebidas não alcoólicas',
   '50% do valor integral',
   'vegetarianos',
   'veganos',
   'solicitação prévia',
-  'louças',
-  'talheres',
+  'todo o material necessário',
   'taças para vinho e espumante',
-  'bar de drinks',
+  'cobradas à parte',
+  'possível contratar separadamente',
   'vinhos, espumantes, cerveja e chopp',
+  'copos',
   'preparação de drinks',
   'serviço de chopp',
+  'garçons servem',
+  'exceção',
+  'material necessário',
+  'pode contratar separadamente',
+  'desvaloriza o serviço',
+  'evento incompleto',
+  'planejamento',
+  ' 10% a mais do número de convidados confirmado, e a diferença é cobrada ao final do serviço.',
+  'é muito importante confirmar o número de convidados com precisão.',
   'cobrado à parte',
-  '10% a mais',
   '5 dias úteis antes do evento',
   'contrato completo e detalhado',
   'pagamento de um sinal',
@@ -67,20 +77,60 @@ function renderFaqAnswerBlock(block) {
 }
 
 export function Home({ sections }) {
+  const [googleReviews, setGoogleReviews] = useState([])
+  const [googleReviewSummary, setGoogleReviewSummary] = useState(null)
   const [testimonialIndex, setTestimonialIndex] = useState(0)
-  const testimonial = clientTestimonials[testimonialIndex]
+  const testimonials = googleReviews.length > 0 ? googleReviews : clientTestimonials
+  const testimonial = testimonials[testimonialIndex]
+  const isGoogleReview = googleReviews.length > 0
 
   useEffect(() => {
-    if (clientTestimonials.length < 2) {
+    let isMounted = true
+
+    async function loadGoogleReviews() {
+      try {
+        const response = await fetch('/api/google-reviews')
+
+        if (!response.ok) {
+          return
+        }
+
+        const data = await response.json()
+
+        if (!isMounted || !Array.isArray(data.reviews) || data.reviews.length === 0) {
+          return
+        }
+
+        setGoogleReviews(data.reviews)
+        setGoogleReviewSummary({
+          googleMapsUri: data.googleMapsUri,
+          rating: data.rating,
+          userRatingCount: data.userRatingCount,
+        })
+        setTestimonialIndex(0)
+      } catch {
+        // The static testimonials remain the fallback if Google Places is unavailable.
+      }
+    }
+
+    loadGoogleReviews()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (testimonials.length < 2) {
       return undefined
     }
 
     const testimonialTimer = window.setInterval(() => {
-      setTestimonialIndex((current) => (current + 1) % clientTestimonials.length)
+      setTestimonialIndex((current) => (current + 1) % testimonials.length)
     }, 5200)
 
     return () => window.clearInterval(testimonialTimer)
-  }, [])
+  }, [testimonials.length])
 
   return (
     <>
@@ -117,8 +167,6 @@ export function Home({ sections }) {
                   loading="lazy"
                   decoding="async"
                 />
-                <span className="about-shape about-shape-large" aria-hidden="true" />
-                <span className="about-shape about-shape-small" aria-hidden="true" />
               </div>
 
               <div className="about-content">
@@ -128,10 +176,10 @@ export function Home({ sections }) {
                   description="Com raízes em uma tradição gastronômica familiar que nasceu em um restaurante na França e se consolidou no Brasil, La Galette Buffet é especializado na realização de eventos sociais e corporativos."
                 />
                 <ul className="about-list">
-                  <li>Experiência em eventos desde 1993</li>
-                  <li>Tradição com uma visão moderna e criativa</li>
-                  <li>Cozinha artesanal com ingredientes frescos e selecionados</li>
-                  <li>Equipe qualificada, atenciosa e comprometida</li>
+                  <li>Experiência em eventos desde 1993.</li>
+                  <li>Tradição com uma visão moderna e criativa.</li>
+                  <li>Cozinha artesanal com ingredientes frescos e selecionados.</li>
+                  <li>Equipe qualificada, atenciosa e comprometida.</li>
                 </ul>
                 <ButtonPill className="about-button" to="/#menus">
                   Conhecer mais
@@ -193,18 +241,42 @@ export function Home({ sections }) {
                 </div>
 
                 <div className="testimonial-panel" aria-live="polite">
-                  <div className="testimonial-slide" key={testimonial.name}>
-                    <p className="testimonial-quote">&ldquo;{testimonial.quote}&rdquo;</p>
+                  {isGoogleReview && googleReviewSummary ? (
+                    <a
+                      className="google-review-summary"
+                      href={googleReviewSummary.googleMapsUri || 'https://www.google.com/maps'}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>
+                        {googleReviewSummary.rating
+                          ? `${googleReviewSummary.rating.toFixed(1)} no Google`
+                          : 'Avaliações Google'}
+                      </span>
+                      {googleReviewSummary.userRatingCount ? (
+                        <strong>{googleReviewSummary.userRatingCount} avaliações</strong>
+                      ) : null}
+                    </a>
+                  ) : null}
+
+                  <div className="testimonial-slide" key={testimonial.name || testimonial.author}>
+                    <p className="testimonial-quote">
+                      &ldquo;{testimonial.quote || testimonial.text}&rdquo;
+                    </p>
                     <div className="testimonial-meta">
-                      <strong>{testimonial.name}</strong>
-                      <span>{testimonial.eventType}</span>
+                      <strong>{testimonial.name || testimonial.author}</strong>
+                      <span>
+                        {isGoogleReview
+                          ? `${testimonial.rating || 5} estrelas no Google`
+                          : testimonial.eventType}
+                      </span>
                     </div>
                   </div>
                   <div className="testimonial-indicators" aria-hidden="true">
-                    {clientTestimonials.map((item, index) => (
+                    {testimonials.map((item, index) => (
                       <span
                         className={index === testimonialIndex ? 'is-active' : undefined}
-                        key={item.name}
+                        key={item.name || `${item.author}-${index}`}
                       />
                     ))}
                   </div>

@@ -84,6 +84,19 @@
   transform: translateY(-1px);
 }
 
+.nav-links a.navbar-instagram {
+  width: 40px;
+  justify-content: center;
+  padding: 8px;
+}
+
+.navbar-instagram-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+}
+
 .dropdown-chevron {
   width: 7px;
   height: 7px;
@@ -497,21 +510,22 @@
   padding: clamp(36px, 4.8vw, 60px) 0 clamp(56px, 6.6vw, 88px);
   display: grid;
   grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
-  align-items: start;
+  align-items: stretch;
   gap: clamp(58px, 8vw, 92px);
 }
 
 .about-media {
   position: relative;
-  display: grid;
-  align-items: start;
+  display: flex;
+  align-self: stretch;
 }
 
 .about-image {
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 1.5 / 1;
+  height: 100%;
+  min-height: 0;
   display: block;
   border-radius: 14px;
   object-fit: cover;
@@ -892,6 +906,42 @@
   display: grid;
   gap: 24px;
   animation: testimonial-fade 720ms ease both;
+}
+
+.google-review-summary {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-terracotta);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.google-review-summary::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.google-review-summary:hover {
+  color: var(--color-terracotta-dark);
+  transform: translateY(-1px);
+}
+
+.google-review-summary strong {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .testimonial-quote {
@@ -2403,6 +2453,11 @@
     gap: 50px;
   }
 
+  .about-image {
+    height: auto;
+    aspect-ratio: 1.35 / 1;
+  }
+
   .about-shape-large {
     left: -26px;
     bottom: -34px;
@@ -2475,6 +2530,18 @@
     background: transparent;
     font-size: 11px;
     letter-spacing: 0.025em;
+  }
+
+  .nav-links a.navbar-instagram {
+    width: 100%;
+    grid-column: 1 / -1;
+    min-height: 30px;
+    padding: 6px 10px;
+  }
+
+  .navbar-instagram-icon {
+    width: 17px;
+    height: 17px;
   }
 
   .dropdown-trigger {
@@ -2722,6 +2789,7 @@
   }
 
   .about-image {
+    height: auto;
     aspect-ratio: 1.25 / 1;
   }
 
