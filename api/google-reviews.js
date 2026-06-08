@@ -58,7 +58,7 @@ export default async function handler(request, response) {
       .map(normalizeReview)
       .filter((review) => review.text.length > 0)
 
-    response.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=86400')
+    response.setHeader('Cache-Control', 's-maxage=604800, stale-while-revalidate=1209600')
 
     return response.status(200).json({
       placeName: place.displayName?.text || 'La Galette Buffet',
