@@ -229,6 +229,112 @@ export const clientTestimonials = [
   },
 ]
 
+export const faqItems = [
+  {
+    question: 'Qual é o número mínimo de convidados?',
+    answer: [
+      'O mínimo é de 30 pessoas para a maioria dos nossos cardápios. Para eventos com ilhas gastronômicas, o mínimo sobe para 40 pessoas, devido à estrutura diferenciada que essa modalidade exige.',
+    ],
+  },
+  {
+    question: 'Quanto tempo vocês servem?',
+    answer: [
+      'Dependendo do cardápio escolhido, servimos os convidados entre 4 e 5 horas. Caso precise de mais tempo, é possível estender o serviço por até 2 horas adicionais, com cobrança de hora extra por profissional.',
+      'A continuidade do serviço de alimentos e bebidas nesse período também tem custo adicional.',
+    ],
+  },
+  {
+    question: 'Os profissionais trabalham uniformizados?',
+    answer: [
+      'Sim. Nossos garçons vestem calça preta, avental longo preto, camisa e gravata, sempre com apresentação impecável. A equipe de cozinha trabalha com uniforme branco, seguindo as normas de higiene e segurança alimentar.',
+    ],
+  },
+  {
+    question: 'A partir de que idade as crianças são cobradas?',
+    answer: [
+      'A cobrança varia conforme o cardápio escolhido.',
+      'Cardápios infantis: até 3 anos, gratuito; de 4 a 6 anos, 50% do valor; a partir de 7 anos, valor integral.',
+      'Demais cardápios: até 4 anos, gratuito; de 5 a 9 anos, 50% do valor; a partir de 10 anos, valor integral.',
+    ],
+  },
+  {
+    question: 'O que está incluso nos cardápios de vocês?',
+    answer: [
+      'Incluímos cocktail volante com finger foods ou petiscos, pratos quentes e frios, sobremesa, café e bebidas não alcoólicas.',
+    ],
+  },
+  {
+    question: 'Vocês têm opções para convidados vegetarianos e veganos?',
+    answer: [
+      'Sim. Todos os nossos cardápios já incluem itens vegetarianos. Para convidados veganos, podemos incluir opções específicas mediante solicitação prévia.',
+    ],
+  },
+  {
+    question: 'Vocês fornecem louças e talheres?',
+    answer: [
+      'Sim. Fornecemos louças, talheres e todo o material necessário de acordo com o tipo de buffet contratado.',
+    ],
+  },
+  {
+    question: 'Os copos e taças estão inclusos?',
+    answer: [
+      'Incluímos copos para água, sucos, bebidas não alcoólicas e cerveja. As taças para vinho e espumante são cobradas à parte, exceto se você contratar nosso serviço de vinhos e espumantes. Nesse caso, as taças já estão inclusas.',
+    ],
+  },
+  {
+    question: 'Vocês fornecem bebidas alcoólicas?',
+    answer: [
+      'As bebidas não alcoólicas já estão inclusas. Bebidas alcoólicas não fazem parte do pacote padrão, mas é possível contratar separadamente nosso bar de drinks, além de vinhos, espumantes, cerveja e chopp.',
+      'Podemos montar juntos a combinação ideal para o seu evento.',
+    ],
+  },
+  {
+    question: 'Se eu fornecer minhas próprias bebidas alcoólicas, vocês servem?',
+    answer: [
+      'Sim. Nossos garçons são capacitados para servir qualquer bebida alcoólica que você fornecer. A exceção é a preparação de drinks e o serviço de chopp, pois exigem dedicação exclusiva e comprometem o andamento do serviço.',
+      'Para isso, você pode contratar separadamente um garçom especializado em chopp e nosso bar de drinks.',
+    ],
+  },
+  {
+    question: 'Posso acrescentar meus próprios alimentos ao buffet?',
+    answer: [
+      'Sim, você pode acrescentar o que quiser. Pedimos apenas que nos avise com antecedência, pois precisamos providenciar o material necessário para servir o que você nos fornecer, como louças, suportes e utensílios específicos. Esses itens são alugados em empresas especializadas, e o custo é cobrado à parte.',
+    ],
+  },
+  {
+    question: 'Se eu retirar o café e a sobremesa, vocês dão desconto?',
+    answer: [
+      'Entendemos que cada evento tem suas particularidades, mas retirar etapas do buffet desvaloriza o serviço e deixa o evento incompleto. Um buffet bem estruturado, com entradas, prato principal, sobremesa e café, garante a satisfação dos seus convidados do início ao fim.',
+      'Podemos estudar descontos muito pequenos nesses casos, porém, na nossa experiência, a economia não compensa: o serviço fica comprometido e os convidados acabam sentindo a diferença.',
+    ],
+  },
+  {
+    question: 'Se comparecer menos pessoas do que o previsto, vocês dão desconto?',
+    answer: [
+      'Infelizmente não. Todo o planejamento, incluindo compra de alimentos, bebidas e dimensionamento da equipe, é feito com base no número de convidados confirmado. Por isso, mesmo que compareçam menos pessoas, o valor contratado é mantido.',
+    ],
+  },
+  {
+    question: 'E se comparecer mais pessoas do que o previsto, vocês conseguem servir?',
+    answer: [
+      'Sempre levamos alimentos e bebidas para até 10% a mais do número de convidados confirmado, e a diferença é cobrada ao final do serviço.',
+      'Para além disso, não podemos garantir que não faltem alimentos e bebidas, e a equipe pode ficar sobrecarregada, comprometendo a qualidade do atendimento. Por isso, é muito importante confirmar o número de convidados com precisão.',
+    ],
+  },
+  {
+    question: 'Até quando posso confirmar o número de pessoas?',
+    answer: [
+      'Você pode confirmar o número de convidados até 5 dias úteis antes do evento. Lembrando que sempre levamos para até 10% a mais do confirmado, e qualquer diferença é cobrada ao final do serviço.',
+    ],
+  },
+  {
+    question: 'Como posso ter garantia de que a data está reservada para mim?',
+    answer: [
+      'Para garantir a sua data, formalizamos tudo com um contrato completo e detalhado, e pedimos o pagamento de um sinal para confirmar a reserva. Assim você fica tranquila sabendo que tudo está assegurado para o seu evento.',
+    ],
+  },
+]
+
 export const menuLinks = [
   ...homeMenuCards.map((card) => ({
     label: card.title.toUpperCase(),

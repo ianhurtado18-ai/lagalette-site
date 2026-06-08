@@ -3,7 +3,51 @@ import { ButtonPill } from '../components/ui/ButtonPill'
 import { MenuCard } from '../components/ui/MenuCard'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import aboutPhoto from '../assets/quem-somos-1.jpg'
-import { clientTestimonials, homeMenuCards, homeServiceCards } from '../siteData'
+import { clientTestimonials, faqItems, homeMenuCards, homeServiceCards } from '../siteData'
+
+const faqHighlightTerms = [
+  '30 pessoas',
+  'ilhas gastronômicas',
+  '40 pessoas',
+  '4 e 5 horas',
+  '2 horas adicionais',
+  'hora extra por profissional',
+  'uniforme branco',
+  'Cardápios infantis',
+  'Demais cardápios',
+  'finger foods',
+  'bebidas não alcoólicas',
+  'vegetarianos',
+  'veganos',
+  'solicitação prévia',
+  'louças',
+  'talheres',
+  'taças para vinho e espumante',
+  'bar de drinks',
+  'vinhos, espumantes, cerveja e chopp',
+  'preparação de drinks',
+  'serviço de chopp',
+  'cobrado à parte',
+  '10% a mais',
+  '5 dias úteis antes do evento',
+  'contrato completo e detalhado',
+  'pagamento de um sinal',
+]
+
+function renderFaqText(text) {
+  const escapedTerms = faqHighlightTerms.map((term) =>
+    term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+  )
+  const pattern = new RegExp(`(${escapedTerms.join('|')})`, 'gi')
+
+  return text.split(pattern).map((part, index) => {
+    const isHighlighted = faqHighlightTerms.some(
+      (term) => term.toLowerCase() === part.toLowerCase(),
+    )
+
+    return isHighlighted ? <strong key={`${part}-${index}`}>{part}</strong> : part
+  })
+}
 
 export function Home({ sections }) {
   const [testimonialIndex, setTestimonialIndex] = useState(0)
@@ -167,6 +211,26 @@ export function Home({ sections }) {
           </section>
         )
       })}
+
+      <section id="faq" className="section faq-section">
+        <SectionTitle
+          kicker="Perguntas Frequentes"
+          title="Tudo o que você precisa saber para planejar seu evento com tranquilidade."
+        />
+
+        <div className="faq-list">
+          {faqItems.map((item, index) => (
+            <details className="faq-item" key={item.question} open={index === 0}>
+              <summary>{item.question}</summary>
+              <div className="faq-answer">
+                {item.answer.map((paragraph) => (
+                  <p key={paragraph}>{renderFaqText(paragraph)}</p>
+                ))}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
     </>
   )
 }
