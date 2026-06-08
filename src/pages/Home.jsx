@@ -127,7 +127,7 @@ export function Home({ sections }) {
 
     const testimonialTimer = window.setInterval(() => {
       setTestimonialIndex((current) => (current + 1) % testimonials.length)
-    }, 5200)
+    }, 9000)
 
     return () => window.clearInterval(testimonialTimer)
   }, [testimonials.length])
@@ -259,7 +259,10 @@ export function Home({ sections }) {
                     </a>
                   ) : null}
 
-                  <div className="testimonial-slide" key={testimonial.name || testimonial.author}>
+                  <article
+                    className="testimonial-slide"
+                    key={testimonial.name || testimonial.author}
+                  >
                     <p className="testimonial-quote">
                       &ldquo;{testimonial.quote || testimonial.text}&rdquo;
                     </p>
@@ -270,8 +273,17 @@ export function Home({ sections }) {
                           ? `${testimonial.rating || 5} estrelas no Google`
                           : testimonial.eventType}
                       </span>
+                      {isGoogleReview && googleReviewSummary?.googleMapsUri ? (
+                        <a
+                          href={googleReviewSummary.googleMapsUri}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Ver avaliações no Google
+                        </a>
+                      ) : null}
                     </div>
-                  </div>
+                  </article>
                   <div className="testimonial-indicators" aria-hidden="true">
                     {testimonials.map((item, index) => (
                       <span
