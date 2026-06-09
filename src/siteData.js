@@ -479,7 +479,6 @@ export const menuPages = [
         'Junino',
         'Junho ou julho, a festa tem que ser alegre com todas as comidinhas típicas que esperamos o ano todo.',
         {
-          hideInNav: true,
           versoes: '',
           items: [
             'Churrasco de espetinhos.',
