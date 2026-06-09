@@ -605,6 +605,7 @@ export const menuPages = [
           disclaimer:
             'Acrescente ainda mais charme e personalidade para sua celebração com nossos vinhos e espumantes nacionais e importados.',
           photos: gallery('finger-food-ilha-gastronomica'),
+          galleryLimit: 12,
         },
       ),
     ],
